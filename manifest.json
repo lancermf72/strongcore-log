@@ -1,1 +1,8 @@
-
+{
+  "name": "StrongCore Log",
+  "short_name": "StrongCore",
+  "start_url": "index.html",
+  "display": "standalone",
+  "background_color": "#ffffff",
+  "theme_color": "#ffffff"
+}
