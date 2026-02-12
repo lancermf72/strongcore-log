@@ -1,0 +1,2 @@
+# strongcore-log
+strongcore-log
