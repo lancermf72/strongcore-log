@@ -11,7 +11,7 @@
 <body class="light">
   <header>
     <h1>StrongCore Log</h1>
-    <button id="themeToggle">🌙</button>
+    <button id="themeToggle" aria-label="Toggle theme">🌙</button>
   </header>
 
   <main>
@@ -26,17 +26,15 @@
       <select id="exercise"></select>
 
       <label>Sets</label>
-      <input type="number" id="sets" />
+      <input type="number" id="sets" min="1" />
 
       <label>Reps</label>
-      <input type="number" id="reps" />
+      <input type="number" id="reps" min="1" />
 
       <label>Weight</label>
-      <input type="number" id="weight" />
+      <input type="number" id="weight" min="0" />
 
-      <button onclick="saveWorkout()">Save Exercise</button>
-
-      <div id="logList"></div>
+      <button id="saveBtn">Save Exercise</button>
     </section>
 
     <!-- EXERCISES -->
@@ -54,7 +52,7 @@
     <!-- PROGRESS -->
     <section id="progress">
       <h2>Progress</h2>
-      <p>Charts coming next phase.</p>
+      <p>Progress charts coming next.</p>
     </section>
   </main>
 
