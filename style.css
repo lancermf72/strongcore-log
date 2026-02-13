@@ -1,7 +1,8 @@
 :root {
   --bg: #ffffff;
-  --text: #111;
+  --text: #111111;
   --card: #f2f2f7;
+  --accent: #0a84ff;
 }
 
 body.dark {
@@ -20,11 +21,18 @@ body {
 header {
   display: flex;
   justify-content: space-between;
+  align-items: center;
   padding: 1rem;
+  border-bottom: 1px solid var(--card);
 }
 
 main {
   padding: 1rem;
+  padding-bottom: 5rem;
+}
+
+h2 {
+  margin-top: 0;
 }
 
 section {
@@ -37,28 +45,42 @@ section.active {
 
 label {
   display: block;
-  margin-top: 0.5rem;
+  margin-top: 0.75rem;
 }
 
 input, select, button {
   width: 100%;
   padding: 0.6rem;
-  margin-top: 0.3rem;
+  margin-top: 0.25rem;
+  font-size: 1rem;
 }
 
 button {
   background: var(--card);
   border: none;
-  border-radius: 10px;
+  border-radius: 12px;
   margin-top: 1rem;
 }
 
+#exerciseCards > div,
+#historyList > div {
+  background: var(--card);
+  padding: 1rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--accent);
+  text-decoration: none;
+}
+
 nav {
-  display: flex;
-  justify-content: space-around;
   position: fixed;
   bottom: 0;
   width: 100%;
+  display: flex;
+  justify-content: space-around;
   background: var(--card);
   padding: 0.5rem 0;
 }
