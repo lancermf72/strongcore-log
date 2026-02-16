@@ -141,21 +141,25 @@ document.addEventListener("DOMContentLoaded", function () {
   if (btn) {
     btn.addEventListener("click", generateSmartWorkout);
   }
-});
-// ===============================
-// DROPDOWN POPULATION LOGIC
+});// ===============================
+// DROPDOWN POPULATION LOGIC (FIXED)
 // ===============================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const muscleSelect = document.querySelector("select[name='muscle']");
-  const exerciseSelect = document.querySelector("select[name='exercise']");
+  const muscleSelect = document.getElementById("muscleGroup");
+  const exerciseSelect = document.getElementById("exercise");
 
-  if (!muscleSelect || !exerciseSelect) return;
+  if (!muscleSelect || !exerciseSelect) {
+    console.log("Dropdown elements not found.");
+    return;
+  }
 
   const muscleGroups = [...new Set(exercises.map(e => e.muscle))];
 
-  // Populate Muscle Dropdown
+  // Clear first
+  muscleSelect.innerHTML = "<option value=''>Select Muscle</option>";
+
   muscleGroups.forEach(group => {
     const option = document.createElement("option");
     option.value = group;
@@ -163,11 +167,11 @@ document.addEventListener("DOMContentLoaded", function () {
     muscleSelect.appendChild(option);
   });
 
-  // Populate Exercises When Muscle Changes
   muscleSelect.addEventListener("change", function () {
+
     const selectedMuscle = this.value;
 
-    exerciseSelect.innerHTML = "";
+    exerciseSelect.innerHTML = "<option value=''>Select Exercise</option>";
 
     const filtered = exercises.filter(e => e.muscle === selectedMuscle);
 
@@ -177,6 +181,7 @@ document.addEventListener("DOMContentLoaded", function () {
       option.textContent = ex.name;
       exerciseSelect.appendChild(option);
     });
+
   });
 
 });
