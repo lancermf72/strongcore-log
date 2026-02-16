@@ -142,3 +142,41 @@ document.addEventListener("DOMContentLoaded", function () {
     btn.addEventListener("click", generateSmartWorkout);
   }
 });
+// ===============================
+// DROPDOWN POPULATION LOGIC
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const muscleSelect = document.querySelector("select[name='muscle']");
+  const exerciseSelect = document.querySelector("select[name='exercise']");
+
+  if (!muscleSelect || !exerciseSelect) return;
+
+  const muscleGroups = [...new Set(exercises.map(e => e.muscle))];
+
+  // Populate Muscle Dropdown
+  muscleGroups.forEach(group => {
+    const option = document.createElement("option");
+    option.value = group;
+    option.textContent = group;
+    muscleSelect.appendChild(option);
+  });
+
+  // Populate Exercises When Muscle Changes
+  muscleSelect.addEventListener("change", function () {
+    const selectedMuscle = this.value;
+
+    exerciseSelect.innerHTML = "";
+
+    const filtered = exercises.filter(e => e.muscle === selectedMuscle);
+
+    filtered.forEach(ex => {
+      const option = document.createElement("option");
+      option.value = ex.name;
+      option.textContent = ex.name;
+      exerciseSelect.appendChild(option);
+    });
+  });
+
+});
