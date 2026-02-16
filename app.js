@@ -141,13 +141,14 @@ document.addEventListener("DOMContentLoaded", function () {
   if (btn) {
     btn.addEventListener("click", generateSmartWorkout);
   }
-});// ===============================
-// DROPDOWN POPULATION LOGIC (FIXED)
+});
+// ===============================
+// DROPDOWN POPULATION LOGIC (FINAL FIX)
 // ===============================
 
 document.addEventListener("DOMContentLoaded", function () {
 
-  const muscleSelect = document.getElementById("muscleGroup");
+  const muscleSelect = document.getElementById("muscle");
   const exerciseSelect = document.getElementById("exercise");
 
   if (!muscleSelect || !exerciseSelect) {
@@ -157,8 +158,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
   const muscleGroups = [...new Set(exercises.map(e => e.muscle))];
 
-  // Clear first
-  muscleSelect.innerHTML = "<option value=''>Select Muscle</option>";
+  // Populate Muscle Dropdown
+  muscleSelect.innerHTML = "<option value=''>Select Muscle Group</option>";
 
   muscleGroups.forEach(group => {
     const option = document.createElement("option");
@@ -167,6 +168,7 @@ document.addEventListener("DOMContentLoaded", function () {
     muscleSelect.appendChild(option);
   });
 
+  // Populate Exercises When Muscle Changes
   muscleSelect.addEventListener("change", function () {
 
     const selectedMuscle = this.value;
