@@ -222,3 +222,24 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+// ===============================
+// GLOBAL TAB FUNCTION
+// ===============================
+
+function showTab(tabName) {
+
+  const sections = document.querySelectorAll("main section");
+
+  // Hide all sections
+  sections.forEach(section => {
+    section.style.display = "none";
+    section.classList.remove("active");
+  });
+
+  // Show selected section
+  const activeSection = document.getElementById(tabName);
+  if (activeSection) {
+    activeSection.style.display = "block";
+    activeSection.classList.add("active");
+  }
+}
