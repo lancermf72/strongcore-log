@@ -187,3 +187,38 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+// ===============================
+// TAB NAVIGATION LOGIC (RESTORE)
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const tabs = document.querySelectorAll(".tab-button");
+  const sections = document.querySelectorAll(".tab-section");
+
+  tabs.forEach(tab => {
+    tab.addEventListener("click", function () {
+
+      const target = this.getAttribute("data-tab");
+
+      // Hide all sections
+      sections.forEach(section => {
+        section.style.display = "none";
+      });
+
+      // Remove active state from all tabs
+      tabs.forEach(t => t.classList.remove("active"));
+
+      // Show selected section
+      const activeSection = document.getElementById(target);
+      if (activeSection) {
+        activeSection.style.display = "block";
+      }
+
+      // Activate tab
+      this.classList.add("active");
+
+    });
+  });
+
+});
