@@ -243,3 +243,33 @@ function showTab(tabName) {
     activeSection.classList.add("active");
   }
 }
+// ===============================
+// RENDER EXERCISE LIBRARY
+// ===============================
+
+function renderExerciseLibrary() {
+
+  const container = document.getElementById("exerciseCards");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  exercises.forEach(ex => {
+
+    const card = document.createElement("div");
+    card.className = "exercise-card";
+
+    card.innerHTML = `
+      <h4>${ex.name}</h4>
+      <p><strong>Muscle:</strong> ${ex.muscle}</p>
+      <p><strong>Equipment:</strong> ${ex.equipment}</p>
+      <a href="${ex.video}" target="_blank">Watch Demo</a>
+    `;
+
+    container.appendChild(card);
+
+  });
+}
+
+// Automatically render when page loads
+document.addEventListener("DOMContentLoaded", renderExerciseLibrary);
