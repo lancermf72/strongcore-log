@@ -273,3 +273,46 @@ function renderExerciseLibrary() {
 
 // Automatically render when page loads
 document.addEventListener("DOMContentLoaded", renderExerciseLibrary);
+// ===============================
+// SAVE WORKOUT ENTRY
+// ===============================
+
+document.addEventListener("DOMContentLoaded", function () {
+
+  const saveBtn = document.getElementById("saveBtn");
+
+  if (!saveBtn) return;
+
+  saveBtn.addEventListener("click", function () {
+
+    const muscle = document.getElementById("muscle").value;
+    const exercise = document.getElementById("exercise").value;
+    const sets = document.getElementById("sets").value;
+    const reps = document.getElementById("reps").value;
+    const weight = document.getElementById("weight").value;
+
+    if (!muscle || !exercise) {
+      alert("Please select a muscle group and exercise.");
+      return;
+    }
+
+    const newEntry = {
+      muscle,
+      exercise,
+      sets,
+      reps,
+      weight,
+      date: new Date().toISOString()
+    };
+
+    const history = JSON.parse(localStorage.getItem("workoutHistory")) || [];
+    history.push(newEntry);
+    localStorage.setItem("workoutHistory", JSON.stringify(history));
+
+    renderHistory();
+
+    alert("Exercise Saved!");
+
+  });
+
+});
