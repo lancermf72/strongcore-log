@@ -1,5 +1,5 @@
 // ===============================
-// STRONGCORE LOG v2.0
+// STRONGCORE LOG v3.0
 // ===============================
 
 // -------- EXERCISE DATABASE --------
@@ -79,7 +79,6 @@ const exerciseDatabase = {
     { name: "Marching Bridge ⭐", draSafe: true, hotel: true },
     { name: "Standing Pallof Press ⭐", draSafe: true, hotel: false },
     { name: "Farmer Carry ⭐", draSafe: true, hotel: true },
-
     { name: "Front Plank", draSafe: false, hotel: true },
     { name: "Side Plank", draSafe: false, hotel: true },
     { name: "Cable Crunch", draSafe: false, hotel: false },
@@ -90,20 +89,57 @@ const exerciseDatabase = {
   ]
 };
 
-// -------- STATE --------
+// -------- FILTER STATE --------
+
+let filterDRA = JSON.parse(localStorage.getItem("filterDRA")) || false;
+let filterHotel = JSON.parse(localStorage.getItem("filterHotel")) || false;
+
+// -------- WORKOUT STATE --------
 
 let currentWorkout = JSON.parse(localStorage.getItem("currentWorkout")) || null;
 let workoutSessions = JSON.parse(localStorage.getItem("workoutSessions")) || [];
 
-// -------- INITIALIZATION --------
+// -------- INIT --------
 
 document.addEventListener("DOMContentLoaded", () => {
+  addFilterBar();
   populateMuscles();
   renderExercises();
   renderHistory();
   setupEventListeners();
   updateWorkoutButton();
 });
+
+// -------- FILTER BAR --------
+
+function addFilterBar() {
+  const logSection = document.getElementById("log");
+
+  const filterDiv = document.createElement("div");
+  filterDiv.style.marginBottom = "10px";
+
+  filterDiv.innerHTML = `
+    <label><input type="checkbox" id="draFilter"> DRA Only</label>
+    <label style="margin-left:10px;"><input type="checkbox" id="hotelFilter"> Hotel Only</label>
+  `;
+
+  logSection.insertBefore(filterDiv, logSection.children[1]);
+
+  document.getElementById("draFilter").checked = filterDRA;
+  document.getElementById("hotelFilter").checked = filterHotel;
+
+  document.getElementById("draFilter").addEventListener("change", (e) => {
+    filterDRA = e.target.checked;
+    localStorage.setItem("filterDRA", JSON.stringify(filterDRA));
+    populateExercises();
+  });
+
+  document.getElementById("hotelFilter").addEventListener("change", (e) => {
+    filterHotel = e.target.checked;
+    localStorage.setItem("filterHotel", JSON.stringify(filterHotel));
+    populateExercises();
+  });
+}
 
 // -------- DROPDOWNS --------
 
@@ -126,10 +162,15 @@ function populateExercises() {
   const exerciseSelect = document.getElementById("exercise");
   exerciseSelect.innerHTML = "";
 
-  exerciseDatabase[muscle].forEach(exercise => {
+  let exercises = exerciseDatabase[muscle];
+
+  if (filterDRA) exercises = exercises.filter(ex => ex.draSafe);
+  if (filterHotel) exercises = exercises.filter(ex => ex.hotel);
+
+  exercises.forEach(exercise => {
     const option = document.createElement("option");
-    option.value = exercise;
-    option.textContent = exercise;
+    option.value = exercise.name;
+    option.textContent = exercise.name;
     exerciseSelect.appendChild(option);
   });
 }
@@ -139,30 +180,23 @@ function populateExercises() {
 function setupEventListeners() {
   document.getElementById("muscle").addEventListener("change", populateExercises);
   document.getElementById("saveBtn").addEventListener("click", saveExercise);
-
   addWorkoutButton();
 }
 
-// -------- START / END WORKOUT --------
+// -------- WORKOUT TOGGLE --------
 
 function addWorkoutButton() {
   const logSection = document.getElementById("log");
-
   const button = document.createElement("button");
   button.id = "workoutToggle";
-  button.style.marginBottom = "15px";
+  button.style.marginBottom = "10px";
   logSection.insertBefore(button, logSection.firstChild);
-
   button.addEventListener("click", toggleWorkout);
 }
 
 function toggleWorkout() {
   if (!currentWorkout) {
-    currentWorkout = {
-      id: Date.now(),
-      date: new Date().toISOString(),
-      exercises: []
-    };
+    currentWorkout = { id: Date.now(), date: new Date().toISOString(), exercises: [] };
     localStorage.setItem("currentWorkout", JSON.stringify(currentWorkout));
   } else {
     workoutSessions.unshift(currentWorkout);
@@ -171,18 +205,15 @@ function toggleWorkout() {
     currentWorkout = null;
     renderHistory();
   }
-
   updateWorkoutButton();
 }
 
 function updateWorkoutButton() {
   const button = document.getElementById("workoutToggle");
-  if (!button) return;
-
-  button.textContent = currentWorkout ? "End Workout" : "Start Workout";
+  if (button) button.textContent = currentWorkout ? "End Workout" : "Start Workout";
 }
 
-// -------- SAVE EXERCISE --------
+// -------- SAVE --------
 
 function saveExercise() {
   if (!currentWorkout) {
@@ -190,25 +221,18 @@ function saveExercise() {
     return;
   }
 
-  const muscle = document.getElementById("muscle").value;
-  const exercise = document.getElementById("exercise").value;
-  const sets = document.getElementById("sets").value;
-  const reps = document.getElementById("reps").value;
-  const weight = document.getElementById("weight").value;
-
   const newEntry = {
     id: Date.now(),
-    muscle,
-    exercise,
-    sets,
-    reps,
-    weight
+    muscle: document.getElementById("muscle").value,
+    exercise: document.getElementById("exercise").value,
+    sets: document.getElementById("sets").value,
+    reps: document.getElementById("reps").value,
+    weight: document.getElementById("weight").value
   };
 
   currentWorkout.exercises.push(newEntry);
   localStorage.setItem("currentWorkout", JSON.stringify(currentWorkout));
-
-  alert("Exercise added to workout.");
+  alert("Exercise added.");
 }
 
 // -------- HISTORY --------
@@ -218,11 +242,8 @@ function renderHistory() {
   historyDiv.innerHTML = "";
 
   workoutSessions.forEach(workout => {
-    const workoutDiv = document.createElement("div");
-    workoutDiv.style.marginBottom = "20px";
-
-    const date = new Date(workout.date).toLocaleDateString();
-    workoutDiv.innerHTML = `<h3>Workout - ${date}</h3>`;
+    const div = document.createElement("div");
+    div.innerHTML = `<h3>Workout - ${new Date(workout.date).toLocaleDateString()}</h3>`;
 
     workout.exercises.forEach(ex => {
       const exDiv = document.createElement("div");
@@ -231,14 +252,12 @@ function renderHistory() {
         <button onclick="editExercise(${workout.id}, ${ex.id})">Edit</button>
         <button onclick="deleteExercise(${workout.id}, ${ex.id})">Delete</button>
       `;
-      workoutDiv.appendChild(exDiv);
+      div.appendChild(exDiv);
     });
 
-    historyDiv.appendChild(workoutDiv);
+    historyDiv.appendChild(div);
   });
 }
-
-// -------- DELETE --------
 
 function deleteExercise(workoutId, exerciseId) {
   workoutSessions = workoutSessions.map(workout => {
@@ -251,8 +270,6 @@ function deleteExercise(workoutId, exerciseId) {
   localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
   renderHistory();
 }
-
-// -------- EDIT --------
 
 function editExercise(workoutId, exerciseId) {
   const workout = workoutSessions.find(w => w.id === workoutId);
@@ -283,21 +300,20 @@ function renderExercises() {
 
     exerciseDatabase[muscle].forEach(ex => {
       const link = document.createElement("a");
-      link.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(ex + " exercise")}`;
+      link.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(ex.name + " exercise")}`;
       link.target = "_blank";
-      link.textContent = ex;
+      link.textContent = ex.name;
       link.style.display = "block";
       container.appendChild(link);
     });
   });
 }
 
-// -------- TAB NAVIGATION --------
+// -------- TABS --------
 
 function showTab(tabId) {
   document.querySelectorAll("main section").forEach(section => {
     section.classList.remove("active");
   });
-
   document.getElementById(tabId).classList.add("active");
 }
