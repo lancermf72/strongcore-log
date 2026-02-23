@@ -186,21 +186,44 @@ function renderExerciseLibrary() {
 }
 // -------- HISTORY --------
 
+// -------- HISTORY --------
+
 function renderHistory() {
   const historyDiv = document.getElementById("historyList");
   if (!historyDiv) return;
 
   historyDiv.innerHTML = "";
 
-  workoutSessions.forEach(function(workout) {
+  workoutSessions.forEach(function(workout, workoutIndex) {
     const workoutDiv = document.createElement("div");
+    workoutDiv.style.border = "1px solid #ccc";
+    workoutDiv.style.padding = "10px";
+    workoutDiv.style.marginBottom = "15px";
 
     const date = new Date(workout.date).toLocaleDateString();
-    workoutDiv.innerHTML = "<h3>Workout - " + date + "</h3>";
 
-    workout.exercises.forEach(function(ex) {
+    const header = document.createElement("h3");
+    header.textContent = "Workout - " + date;
+    workoutDiv.appendChild(header);
+
+    // Delete entire workout button
+    const deleteWorkoutBtn = document.createElement("button");
+    deleteWorkoutBtn.textContent = "Delete Workout";
+    deleteWorkoutBtn.style.marginBottom = "10px";
+    deleteWorkoutBtn.onclick = function() {
+      deleteWorkout(workoutIndex);
+    };
+    workoutDiv.appendChild(deleteWorkoutBtn);
+
+    // Exercises
+    workout.exercises.forEach(function(ex, exerciseIndex) {
       const exDiv = document.createElement("div");
-      exDiv.textContent =
+      exDiv.style.display = "flex";
+      exDiv.style.justifyContent = "space-between";
+      exDiv.style.marginBottom = "5px";
+
+      const exText = document.createElement("span");
+      exText.textContent =
         ex.exercise +
         " - " +
         ex.sets +
@@ -208,9 +231,30 @@ function renderHistory() {
         ex.reps +
         " @ " +
         (ex.weight || 0);
+
+      const deleteExBtn = document.createElement("button");
+      deleteExBtn.textContent = "✖";
+      deleteExBtn.onclick = function() {
+        deleteExercise(workoutIndex, exerciseIndex);
+      };
+
+      exDiv.appendChild(exText);
+      exDiv.appendChild(deleteExBtn);
+
       workoutDiv.appendChild(exDiv);
     });
 
     historyDiv.appendChild(workoutDiv);
   });
+}
+function deleteWorkout(index) {
+  workoutSessions.splice(index, 1);
+  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
+  renderHistory();
+}
+
+function deleteExercise(workoutIndex, exerciseIndex) {
+  workoutSessions[workoutIndex].exercises.splice(exerciseIndex, 1);
+  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
+  renderHistory();
 }
