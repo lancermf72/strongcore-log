@@ -316,3 +316,36 @@ document.addEventListener("DOMContentLoaded", function () {
   });
 
 });
+// ===============================
+// RENDER HISTORY
+// ===============================
+
+function renderHistory() {
+
+  const historyList = document.getElementById("historyList");
+  if (!historyList) return;
+
+  const history = JSON.parse(localStorage.getItem("workoutHistory")) || [];
+
+  historyList.innerHTML = "";
+
+  history.slice().reverse().forEach(entry => {
+
+    const div = document.createElement("div");
+    div.className = "exercise-card";
+
+    div.innerHTML = `
+      <strong>${entry.exercise}</strong><br/>
+      Muscle: ${entry.muscle}<br/>
+      ${entry.sets} sets × ${entry.reps} reps @ ${entry.weight} lbs<br/>
+      <small>${new Date(entry.date).toLocaleDateString()}</small>
+    `;
+
+    historyList.appendChild(div);
+
+  });
+
+}
+
+// Render history on page load
+document.addEventListener("DOMContentLoaded", renderHistory);
