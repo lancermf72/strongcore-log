@@ -42,8 +42,8 @@ const exerciseDatabase = {
 
 // -------- WORKOUT STATE --------
 
+let workoutSessions = JSON.parse(localStorage.getItem("workoutSessions")) || [];
 let currentWorkout = null;
-let workoutSessions = [];
 
 // -------- INIT --------
 
@@ -52,6 +52,7 @@ document.addEventListener("DOMContentLoaded", function() {
   setupListeners();
   addWorkoutButton();
   renderExerciseLibrary();
+  renderHistory();
 });
 
 // -------- DROPDOWNS --------
@@ -118,12 +119,12 @@ function toggleWorkout() {
     document.getElementById("workoutToggle").textContent = "End Workout";
   } else {
     workoutSessions.push(currentWorkout);
+    localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
     currentWorkout = null;
     document.getElementById("workoutToggle").textContent = "Start Workout";
     renderHistory();
   }
 }
-
 // -------- SAVE --------
 
 function saveExercise() {
