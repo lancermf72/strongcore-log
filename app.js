@@ -51,6 +51,7 @@ document.addEventListener("DOMContentLoaded", function() {
   populateMuscles();
   setupListeners();
   addWorkoutButton();
+  renderExerciseLibrary();
 });
 
 // -------- DROPDOWNS --------
@@ -153,5 +154,31 @@ function showTab(tabId) {
   const activeSection = document.getElementById(tabId);
   if (activeSection) {
     activeSection.classList.add("active");
+  }
+}
+// -------- EXERCISE LIBRARY --------
+
+function renderExerciseLibrary() {
+  const container = document.getElementById("exerciseCards");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  for (let muscle in exerciseDatabase) {
+    const header = document.createElement("h3");
+    header.textContent = muscle;
+    container.appendChild(header);
+
+    exerciseDatabase[muscle].forEach(function(exercise) {
+      const link = document.createElement("a");
+      link.href =
+        "https://www.youtube.com/results?search_query=" +
+        encodeURIComponent(exercise.name + " exercise");
+      link.target = "_blank";
+      link.textContent = exercise.name;
+      link.style.display = "block";
+
+      container.appendChild(link);
+    });
   }
 }
