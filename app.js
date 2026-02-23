@@ -1,351 +1,303 @@
 // ===============================
-// STRONGCORE SMART TRAINING APP
+// STRONGCORE LOG v2.0
 // ===============================
 
-// ===============================
-// EXERCISE DATABASE
-// ===============================
+// -------- EXERCISE DATABASE --------
 
-const exercises = [
+const exerciseDatabase = {
 
-  // ---------------- CHEST ----------------
-  { name: "Barbell Bench Press", muscle: "Chest", secondary: "Triceps", equipment: "Barbell", video: yt("barbell bench press exercise demo") },
-  { name: "Incline Dumbbell Press", muscle: "Chest", secondary: "Triceps", equipment: "Dumbbell", video: yt("incline dumbbell press exercise demo") },
-  { name: "Machine Chest Press", muscle: "Chest", secondary: "Triceps", equipment: "Machine", video: yt("machine chest press exercise demo") },
-  { name: "Cable Chest Fly", muscle: "Chest", secondary: "Chest", equipment: "Cable", video: yt("cable chest fly exercise demo") },
-  { name: "Push-Up", muscle: "Chest", secondary: "Triceps", equipment: "Bodyweight", video: yt("push up exercise demo proper form") },
-  { name: "Close Grip Bench Press", muscle: "Chest", secondary: "Triceps", equipment: "Barbell", video: yt("close grip bench press exercise demo") },
+  Chest: [
+    { name: "Barbell Bench Press", draSafe: false, hotel: false },
+    { name: "Incline Barbell Press", draSafe: false, hotel: false },
+    { name: "Dumbbell Bench Press", draSafe: false, hotel: true },
+    { name: "Incline Dumbbell Press", draSafe: false, hotel: true },
+    { name: "Push-Up", draSafe: false, hotel: true },
+    { name: "Decline Push-Up", draSafe: false, hotel: true },
+    { name: "Machine Chest Press", draSafe: false, hotel: false },
+    { name: "Cable Chest Fly", draSafe: false, hotel: false },
+    { name: "Pec Deck", draSafe: false, hotel: false },
+    { name: "Close Grip Bench Press", draSafe: false, hotel: false }
+  ],
 
-  // ---------------- BACK ----------------
-  { name: "Seated Cable Row", muscle: "Back", secondary: "Biceps", equipment: "Cable", video: yt("seated cable row exercise demo") },
-  { name: "Lat Pulldown", muscle: "Back", secondary: "Biceps", equipment: "Machine", video: yt("lat pulldown exercise demo") },
-  { name: "Chest Supported Row", muscle: "Back", secondary: "Biceps", equipment: "Machine", video: yt("chest supported row machine demo") },
-  { name: "Straight Arm Pulldown", muscle: "Back", secondary: "Back", equipment: "Cable", video: yt("straight arm pulldown exercise demo") },
-  { name: "Single Arm Dumbbell Row", muscle: "Back", secondary: "Biceps", equipment: "Dumbbell", video: yt("single arm dumbbell row demo") },
+  Back: [
+    { name: "Lat Pulldown", draSafe: false, hotel: false },
+    { name: "Pull-Up", draSafe: false, hotel: true },
+    { name: "Assisted Pull-Up", draSafe: false, hotel: false },
+    { name: "Seated Cable Row", draSafe: false, hotel: false },
+    { name: "Chest Supported Row", draSafe: false, hotel: true },
+    { name: "Single Arm Dumbbell Row", draSafe: false, hotel: true },
+    { name: "Straight Arm Pulldown", draSafe: false, hotel: false },
+    { name: "Barbell Row", draSafe: false, hotel: false },
+    { name: "T-Bar Row", draSafe: false, hotel: false },
+    { name: "Face Pull", draSafe: false, hotel: false }
+  ],
 
-  // ---------------- SHOULDERS ----------------
-  { name: "Dumbbell Shoulder Press", muscle: "Shoulders", secondary: "Triceps", equipment: "Dumbbell", video: yt("dumbbell shoulder press demo") },
-  { name: "Lateral Raise", muscle: "Shoulders", secondary: "Shoulders", equipment: "Dumbbell", video: yt("dumbbell lateral raise demo") },
-  { name: "Rear Delt Fly (Machine)", muscle: "Shoulders", secondary: "Back", equipment: "Machine", video: yt("rear delt fly machine demo") },
-  { name: "Barbell Shrugs", muscle: "Shoulders", secondary: "Back", equipment: "Barbell", video: yt("barbell shrugs demo") },
-  { name: "Dumbbell Shrugs", muscle: "Shoulders", secondary: "Back", equipment: "Dumbbell", video: yt("dumbbell shrugs demo") },
+  Shoulders: [
+    { name: "Barbell Overhead Press", draSafe: false, hotel: false },
+    { name: "Dumbbell Shoulder Press", draSafe: false, hotel: true },
+    { name: "Arnold Press", draSafe: false, hotel: true },
+    { name: "Lateral Raise", draSafe: false, hotel: true },
+    { name: "Rear Delt Fly", draSafe: false, hotel: true },
+    { name: "Cable Lateral Raise", draSafe: false, hotel: false },
+    { name: "Front Raise", draSafe: false, hotel: true },
+    { name: "Shoulder Shrugs", draSafe: false, hotel: true },
+    { name: "Upright Row", draSafe: false, hotel: false }
+  ],
 
-  // ---------------- ARMS ----------------
-  { name: "Preacher Curl", muscle: "Arms", secondary: "Biceps", equipment: "Machine", video: yt("preacher curl demo") },
-  { name: "Dumbbell Curl", muscle: "Arms", secondary: "Biceps", equipment: "Dumbbell", video: yt("dumbbell bicep curl demo") },
-  { name: "Cable Triceps Pushdown", muscle: "Arms", secondary: "Triceps", equipment: "Cable", video: yt("cable triceps pushdown demo") },
-  { name: "Overhead Triceps Extension", muscle: "Arms", secondary: "Triceps", equipment: "Dumbbell", video: yt("overhead triceps extension demo") },
+  Arms: [
+    { name: "Barbell Curl", draSafe: false, hotel: false },
+    { name: "Preacher Curl", draSafe: false, hotel: false },
+    { name: "Dumbbell Curl", draSafe: false, hotel: true },
+    { name: "Hammer Curl", draSafe: false, hotel: true },
+    { name: "Cable Curl", draSafe: false, hotel: false },
+    { name: "Triceps Pushdown", draSafe: false, hotel: false },
+    { name: "Overhead Triceps Extension", draSafe: false, hotel: true },
+    { name: "Skull Crushers", draSafe: false, hotel: false },
+    { name: "Bench Dips", draSafe: false, hotel: true }
+  ],
 
-  // ---------------- LEGS ----------------
-  { name: "Barbell Squat", muscle: "Legs", secondary: "Glutes", equipment: "Barbell", video: yt("barbell squat demo") },
-  { name: "Leg Press", muscle: "Legs", secondary: "Glutes", equipment: "Machine", video: yt("leg press machine demo") },
-  { name: "Walking Lunges", muscle: "Legs", secondary: "Glutes", equipment: "Dumbbell", video: yt("walking lunges demo") },
-  { name: "Romanian Deadlift", muscle: "Legs", secondary: "Glutes", equipment: "Barbell", video: yt("romanian deadlift demo") },
-  { name: "Glute Bridge", muscle: "Legs", secondary: "Glutes", equipment: "Bodyweight", video: yt("glute bridge demo") },
-  { name: "Marching Bridge", muscle: "Legs", secondary: "Core", equipment: "Bodyweight", video: yt("marching glute bridge demo") },
+  Legs: [
+    { name: "Barbell Squat", draSafe: false, hotel: false },
+    { name: "Goblet Squat", draSafe: false, hotel: true },
+    { name: "Leg Press", draSafe: false, hotel: false },
+    { name: "Walking Lunges", draSafe: false, hotel: true },
+    { name: "Reverse Lunges", draSafe: false, hotel: true },
+    { name: "Romanian Deadlift", draSafe: false, hotel: true },
+    { name: "Deadlift", draSafe: false, hotel: false },
+    { name: "Hamstring Curl", draSafe: false, hotel: false },
+    { name: "Step-Ups", draSafe: false, hotel: true },
+    { name: "Calf Raises", draSafe: false, hotel: true }
+  ],
 
-  // ---------------- CORE (DRA SAFE ONLY) ----------------
-  { name: "Dead Bug", muscle: "Core", secondary: "Core", equipment: "Bodyweight", draSafe: true, video: yt("dead bug exercise demo") },
-  { name: "Heel Slides", muscle: "Core", secondary: "Core", equipment: "Bodyweight", draSafe: true, video: yt("heel slides core exercise demo") },
-  { name: "Standing Pallof Press", muscle: "Core", secondary: "Core", equipment: "Cable", draSafe: true, video: yt("standing pallof press demo") },
-  { name: "Side Lying Clamshell", muscle: "Core", secondary: "Glutes", equipment: "Bodyweight", draSafe: true, video: yt("side lying clamshell demo") },
-  { name: "Modified Plank (Knees)", muscle: "Core", secondary: "Core", equipment: "Bodyweight", draSafe: true, advanced: true, video: yt("modified plank knees demo") },
-  { name: "Elevated Plank (Bench)", muscle: "Core", secondary: "Core", equipment: "Bodyweight", draSafe: true, advanced: true, video: yt("incline plank demo") }
+  Core: [
+    { name: "Dead Bug ⭐", draSafe: true, hotel: true },
+    { name: "Heel Slides ⭐", draSafe: true, hotel: true },
+    { name: "Bird Dog ⭐", draSafe: true, hotel: true },
+    { name: "Modified Plank ⭐", draSafe: true, hotel: true },
+    { name: "Side Plank (Knees) ⭐", draSafe: true, hotel: true },
+    { name: "Glute Bridge ⭐", draSafe: true, hotel: true },
+    { name: "Marching Bridge ⭐", draSafe: true, hotel: true },
+    { name: "Standing Pallof Press ⭐", draSafe: true, hotel: false },
+    { name: "Farmer Carry ⭐", draSafe: true, hotel: true },
 
-];
+    { name: "Front Plank", draSafe: false, hotel: true },
+    { name: "Side Plank", draSafe: false, hotel: true },
+    { name: "Cable Crunch", draSafe: false, hotel: false },
+    { name: "Hanging Leg Raise", draSafe: false, hotel: false },
+    { name: "Sit-Up", draSafe: false, hotel: true },
+    { name: "Russian Twist", draSafe: false, hotel: true },
+    { name: "Ab Wheel Rollout", draSafe: false, hotel: true }
+  ]
+};
 
-// ===============================
-// HELPER FUNCTIONS
-// ===============================
+// -------- STATE --------
 
-function yt(query) {
-  return `https://www.youtube.com/results?search_query=${encodeURIComponent(query)}`;
-}
+let currentWorkout = JSON.parse(localStorage.getItem("currentWorkout")) || null;
+let workoutSessions = JSON.parse(localStorage.getItem("workoutSessions")) || [];
 
-function getHistory() {
-  return JSON.parse(localStorage.getItem("workoutHistory")) || [];
-}
+// -------- INITIALIZATION --------
 
-function saveHistory(history) {
-  localStorage.setItem("workoutHistory", JSON.stringify(history));
-}
-
-// ===============================
-// SMART GENERATOR LOGIC
-// ===============================
-
-function generateSmartWorkout() {
-
-  const history = getHistory();
-
-  const muscleGroups = ["Chest", "Back", "Legs", "Shoulders", "Arms"];
-
-  const lastTrained = {};
-
-  muscleGroups.forEach(m => lastTrained[m] = 0);
-
-  history.forEach(entry => {
-    lastTrained[entry.muscle] = Date.parse(entry.date);
-  });
-
-  const leastRecent = muscleGroups.sort((a, b) => lastTrained[a] - lastTrained[b])[0];
-
-  const primaryExercises = exercises.filter(e => e.muscle === leastRecent);
-  const coreExercises = exercises.filter(e => e.muscle === "Core" && e.draSafe);
-
-  const selectedPrimary = shuffle(primaryExercises).slice(0, 3);
-  const selectedCore = shuffle(coreExercises)[0];
-
-  displayWorkout(leastRecent, selectedPrimary, selectedCore);
-}
-
-function shuffle(array) {
-  return array.sort(() => 0.5 - Math.random());
-}
-
-// ===============================
-// DISPLAY
-// ===============================
-
-function displayWorkout(muscle, primary, core) {
-
-  const container = document.getElementById("smartWorkout");
-  container.innerHTML = `<h3>${muscle} Focus Day</h3>`;
-
-  primary.forEach(ex => {
-    container.innerHTML += `
-      <div class="exercise-card">
-        <strong>${ex.name}</strong><br/>
-        Equipment: ${ex.equipment}<br/>
-        <a href="${ex.video}" target="_blank">Demo</a>
-      </div>
-    `;
-  });
-
-  container.innerHTML += `
-    <h4>DRA-Safe Core</h4>
-    <div class="exercise-card">
-      <strong>${core.name}</strong><br/>
-      Equipment: ${core.equipment}<br/>
-      <a href="${core.video}" target="_blank">Demo</a>
-    </div>
-  `;
-}
-
-// ===============================
-// BUTTON LISTENER
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
-  const btn = document.getElementById("generateWorkoutBtn");
-  if (btn) {
-    btn.addEventListener("click", generateSmartWorkout);
-  }
+document.addEventListener("DOMContentLoaded", () => {
+  populateMuscles();
+  renderExercises();
+  renderHistory();
+  setupEventListeners();
+  updateWorkoutButton();
 });
-// ===============================
-// DROPDOWN POPULATION LOGIC (FINAL FIX)
-// ===============================
 
-document.addEventListener("DOMContentLoaded", function () {
+// -------- DROPDOWNS --------
 
+function populateMuscles() {
   const muscleSelect = document.getElementById("muscle");
-  const exerciseSelect = document.getElementById("exercise");
+  muscleSelect.innerHTML = "";
 
-  if (!muscleSelect || !exerciseSelect) {
-    console.log("Dropdown elements not found.");
-    return;
-  }
-
-  const muscleGroups = [...new Set(exercises.map(e => e.muscle))];
-
-  // Populate Muscle Dropdown
-  muscleSelect.innerHTML = "<option value=''>Select Muscle Group</option>";
-
-  muscleGroups.forEach(group => {
+  Object.keys(exerciseDatabase).forEach(muscle => {
     const option = document.createElement("option");
-    option.value = group;
-    option.textContent = group;
+    option.value = muscle;
+    option.textContent = muscle;
     muscleSelect.appendChild(option);
   });
 
-  // Populate Exercises When Muscle Changes
-  muscleSelect.addEventListener("change", function () {
+  populateExercises();
+}
 
-    const selectedMuscle = this.value;
+function populateExercises() {
+  const muscle = document.getElementById("muscle").value;
+  const exerciseSelect = document.getElementById("exercise");
+  exerciseSelect.innerHTML = "";
 
-    exerciseSelect.innerHTML = "<option value=''>Select Exercise</option>";
+  exerciseDatabase[muscle].forEach(exercise => {
+    const option = document.createElement("option");
+    option.value = exercise;
+    option.textContent = exercise;
+    exerciseSelect.appendChild(option);
+  });
+}
 
-    const filtered = exercises.filter(e => e.muscle === selectedMuscle);
+// -------- EVENT LISTENERS --------
 
-    filtered.forEach(ex => {
-      const option = document.createElement("option");
-      option.value = ex.name;
-      option.textContent = ex.name;
-      exerciseSelect.appendChild(option);
+function setupEventListeners() {
+  document.getElementById("muscle").addEventListener("change", populateExercises);
+  document.getElementById("saveBtn").addEventListener("click", saveExercise);
+
+  addWorkoutButton();
+}
+
+// -------- START / END WORKOUT --------
+
+function addWorkoutButton() {
+  const logSection = document.getElementById("log");
+
+  const button = document.createElement("button");
+  button.id = "workoutToggle";
+  button.style.marginBottom = "15px";
+  logSection.insertBefore(button, logSection.firstChild);
+
+  button.addEventListener("click", toggleWorkout);
+}
+
+function toggleWorkout() {
+  if (!currentWorkout) {
+    currentWorkout = {
+      id: Date.now(),
+      date: new Date().toISOString(),
+      exercises: []
+    };
+    localStorage.setItem("currentWorkout", JSON.stringify(currentWorkout));
+  } else {
+    workoutSessions.unshift(currentWorkout);
+    localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
+    localStorage.removeItem("currentWorkout");
+    currentWorkout = null;
+    renderHistory();
+  }
+
+  updateWorkoutButton();
+}
+
+function updateWorkoutButton() {
+  const button = document.getElementById("workoutToggle");
+  if (!button) return;
+
+  button.textContent = currentWorkout ? "End Workout" : "Start Workout";
+}
+
+// -------- SAVE EXERCISE --------
+
+function saveExercise() {
+  if (!currentWorkout) {
+    alert("Start a workout first.");
+    return;
+  }
+
+  const muscle = document.getElementById("muscle").value;
+  const exercise = document.getElementById("exercise").value;
+  const sets = document.getElementById("sets").value;
+  const reps = document.getElementById("reps").value;
+  const weight = document.getElementById("weight").value;
+
+  const newEntry = {
+    id: Date.now(),
+    muscle,
+    exercise,
+    sets,
+    reps,
+    weight
+  };
+
+  currentWorkout.exercises.push(newEntry);
+  localStorage.setItem("currentWorkout", JSON.stringify(currentWorkout));
+
+  alert("Exercise added to workout.");
+}
+
+// -------- HISTORY --------
+
+function renderHistory() {
+  const historyDiv = document.getElementById("historyList");
+  historyDiv.innerHTML = "";
+
+  workoutSessions.forEach(workout => {
+    const workoutDiv = document.createElement("div");
+    workoutDiv.style.marginBottom = "20px";
+
+    const date = new Date(workout.date).toLocaleDateString();
+    workoutDiv.innerHTML = `<h3>Workout - ${date}</h3>`;
+
+    workout.exercises.forEach(ex => {
+      const exDiv = document.createElement("div");
+      exDiv.innerHTML = `
+        ${ex.exercise} - ${ex.sets}x${ex.reps} @ ${ex.weight || 0}
+        <button onclick="editExercise(${workout.id}, ${ex.id})">Edit</button>
+        <button onclick="deleteExercise(${workout.id}, ${ex.id})">Delete</button>
+      `;
+      workoutDiv.appendChild(exDiv);
     });
 
+    historyDiv.appendChild(workoutDiv);
+  });
+}
+
+// -------- DELETE --------
+
+function deleteExercise(workoutId, exerciseId) {
+  workoutSessions = workoutSessions.map(workout => {
+    if (workout.id === workoutId) {
+      workout.exercises = workout.exercises.filter(ex => ex.id !== exerciseId);
+    }
+    return workout;
   });
 
-});
-// ===============================
-// TAB NAVIGATION LOGIC (RESTORE)
-// ===============================
+  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
+  renderHistory();
+}
 
-document.addEventListener("DOMContentLoaded", function () {
+// -------- EDIT --------
 
-  const tabs = document.querySelectorAll(".tab-button");
-  const sections = document.querySelectorAll(".tab-section");
+function editExercise(workoutId, exerciseId) {
+  const workout = workoutSessions.find(w => w.id === workoutId);
+  const exercise = workout.exercises.find(ex => ex.id === exerciseId);
 
-  tabs.forEach(tab => {
-    tab.addEventListener("click", function () {
+  showTab("log");
 
-      const target = this.getAttribute("data-tab");
+  document.getElementById("muscle").value = exercise.muscle;
+  populateExercises();
+  document.getElementById("exercise").value = exercise.exercise;
+  document.getElementById("sets").value = exercise.sets;
+  document.getElementById("reps").value = exercise.reps;
+  document.getElementById("weight").value = exercise.weight;
 
-      // Hide all sections
-      sections.forEach(section => {
-        section.style.display = "none";
-      });
+  deleteExercise(workoutId, exerciseId);
+}
 
-      // Remove active state from all tabs
-      tabs.forEach(t => t.classList.remove("active"));
+// -------- EXERCISE LIBRARY --------
 
-      // Show selected section
-      const activeSection = document.getElementById(target);
-      if (activeSection) {
-        activeSection.style.display = "block";
-      }
+function renderExercises() {
+  const container = document.getElementById("exerciseCards");
+  container.innerHTML = "";
 
-      // Activate tab
-      this.classList.add("active");
+  Object.keys(exerciseDatabase).forEach(muscle => {
+    const header = document.createElement("h3");
+    header.textContent = muscle;
+    container.appendChild(header);
 
+    exerciseDatabase[muscle].forEach(ex => {
+      const link = document.createElement("a");
+      link.href = `https://www.youtube.com/results?search_query=${encodeURIComponent(ex + " exercise")}`;
+      link.target = "_blank";
+      link.textContent = ex;
+      link.style.display = "block";
+      container.appendChild(link);
     });
   });
+}
 
-});
-// ===============================
-// GLOBAL TAB FUNCTION
-// ===============================
+// -------- TAB NAVIGATION --------
 
-function showTab(tabName) {
-
-  const sections = document.querySelectorAll("main section");
-
-  // Hide all sections
-  sections.forEach(section => {
-    section.style.display = "none";
+function showTab(tabId) {
+  document.querySelectorAll("main section").forEach(section => {
     section.classList.remove("active");
   });
 
-  // Show selected section
-  const activeSection = document.getElementById(tabName);
-  if (activeSection) {
-    activeSection.style.display = "block";
-    activeSection.classList.add("active");
-  }
+  document.getElementById(tabId).classList.add("active");
 }
-// ===============================
-// RENDER EXERCISE LIBRARY
-// ===============================
-
-function renderExerciseLibrary() {
-
-  const container = document.getElementById("exerciseCards");
-  if (!container) return;
-
-  container.innerHTML = "";
-
-  exercises.forEach(ex => {
-
-    const card = document.createElement("div");
-    card.className = "exercise-card";
-
-    card.innerHTML = `
-      <h4>${ex.name}</h4>
-      <p><strong>Muscle:</strong> ${ex.muscle}</p>
-      <p><strong>Equipment:</strong> ${ex.equipment}</p>
-      <a href="${ex.video}" target="_blank">Watch Demo</a>
-    `;
-
-    container.appendChild(card);
-
-  });
-}
-
-// Automatically render when page loads
-document.addEventListener("DOMContentLoaded", renderExerciseLibrary);
-// ===============================
-// SAVE WORKOUT ENTRY
-// ===============================
-
-document.addEventListener("DOMContentLoaded", function () {
-
-  const saveBtn = document.getElementById("saveBtn");
-
-  if (!saveBtn) return;
-
-  saveBtn.addEventListener("click", function () {
-
-    const muscle = document.getElementById("muscle").value;
-    const exercise = document.getElementById("exercise").value;
-    const sets = document.getElementById("sets").value;
-    const reps = document.getElementById("reps").value;
-    const weight = document.getElementById("weight").value;
-
-    if (!muscle || !exercise) {
-      alert("Please select a muscle group and exercise.");
-      return;
-    }
-
-    const newEntry = {
-      muscle,
-      exercise,
-      sets,
-      reps,
-      weight,
-      date: new Date().toISOString()
-    };
-
-    const history = JSON.parse(localStorage.getItem("workoutHistory")) || [];
-    history.push(newEntry);
-    localStorage.setItem("workoutHistory", JSON.stringify(history));
-
-    renderHistory();
-
-    alert("Exercise Saved!");
-
-  });
-
-});
-// ===============================
-// RENDER HISTORY
-// ===============================
-
-function renderHistory() {
-
-  const historyList = document.getElementById("historyList");
-  if (!historyList) return;
-
-  const history = JSON.parse(localStorage.getItem("workoutHistory")) || [];
-
-  historyList.innerHTML = "";
-
-  history.slice().reverse().forEach(entry => {
-
-    const div = document.createElement("div");
-    div.className = "exercise-card";
-
-    div.innerHTML = `
-      <strong>${entry.exercise}</strong><br/>
-      Muscle: ${entry.muscle}<br/>
-      ${entry.sets} sets × ${entry.reps} reps @ ${entry.weight} lbs<br/>
-      <small>${new Date(entry.date).toLocaleDateString()}</small>
-    `;
-
-    historyList.appendChild(div);
-
-  });
-
-}
-
-// Render history on page load
-document.addEventListener("DOMContentLoaded", renderHistory);
