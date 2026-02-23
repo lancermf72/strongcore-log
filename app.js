@@ -182,3 +182,33 @@ function renderExerciseLibrary() {
     });
   }
 }
+// -------- HISTORY --------
+
+function renderHistory() {
+  const historyDiv = document.getElementById("historyList");
+  if (!historyDiv) return;
+
+  historyDiv.innerHTML = "";
+
+  workoutSessions.forEach(function(workout) {
+    const workoutDiv = document.createElement("div");
+
+    const date = new Date(workout.date).toLocaleDateString();
+    workoutDiv.innerHTML = "<h3>Workout - " + date + "</h3>";
+
+    workout.exercises.forEach(function(ex) {
+      const exDiv = document.createElement("div");
+      exDiv.textContent =
+        ex.exercise +
+        " - " +
+        ex.sets +
+        "x" +
+        ex.reps +
+        " @ " +
+        (ex.weight || 0);
+      workoutDiv.appendChild(exDiv);
+    });
+
+    historyDiv.appendChild(workoutDiv);
+  });
+}
