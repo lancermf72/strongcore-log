@@ -141,3 +141,17 @@ function saveExercise() {
   currentWorkout.exercises.push(entry);
   alert("Exercise added.");
 }
+// -------- TAB NAVIGATION --------
+
+function showTab(tabId) {
+  const sections = document.querySelectorAll("main section");
+
+  sections.forEach(function(section) {
+    section.classList.remove("active");
+  });
+
+  const activeSection = document.getElementById(tabId);
+  if (activeSection) {
+    activeSection.classList.add("active");
+  }
+}
