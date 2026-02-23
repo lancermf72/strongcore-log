@@ -120,6 +120,7 @@ function toggleWorkout() {
     workoutSessions.push(currentWorkout);
     currentWorkout = null;
     document.getElementById("workoutToggle").textContent = "Start Workout";
+    renderHistory();
   }
 }
 
