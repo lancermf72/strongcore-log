@@ -168,10 +168,11 @@ function populateExercises() {
   if (filterHotel) exercises = exercises.filter(ex => ex.hotel);
 
   exercises.forEach(exercise => {
-    const option = document.createElement("option");
-    option.value = exercise.name;
-    option.textContent = exercise.name;
-    exerciseSelect.appendChild(option);
+  const option = document.createElement("option");
+  option.value = exercise.name;
+  option.textContent = exercise.name;
+  exerciseSelect.appendChild(option);
+});
   });
 }
 
