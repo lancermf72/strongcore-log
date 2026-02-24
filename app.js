@@ -326,6 +326,7 @@ function generateWorkout() {
   }
 
   alert("New workout generated!");
+  renderActiveWorkout();
 }
 // -------- ACTIVE WORKOUT DISPLAY --------
 
