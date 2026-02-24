@@ -327,3 +327,22 @@ function generateWorkout() {
 
   alert("New workout generated!");
 }
+// -------- ACTIVE WORKOUT DISPLAY --------
+
+function renderActiveWorkout() {
+  const container = document.getElementById("activeWorkout");
+  if (!container) return;
+
+  container.innerHTML = "";
+
+  if (!currentWorkout || currentWorkout.exercises.length === 0) {
+    container.innerHTML = "<p>No exercises yet.</p>";
+    return;
+  }
+
+  currentWorkout.exercises.forEach(function(ex) {
+    const div = document.createElement("div");
+    div.textContent = ex.exercise;
+    container.appendChild(div);
+  });
+}
