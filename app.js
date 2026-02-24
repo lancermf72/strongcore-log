@@ -79,6 +79,9 @@ document.addEventListener("DOMContentLoaded", function() {
   addWorkoutButton();
   renderExerciseLibrary();
   renderHistory();
+  
+  document.getElementById("generateBtn")
+  .addEventListener("click", generateWorkout);
 });
 
 // -------- DROPDOWNS --------
