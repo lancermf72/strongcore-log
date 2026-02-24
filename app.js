@@ -284,3 +284,38 @@ function deleteExercise(workoutIndex, exerciseIndex) {
   localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
   renderHistory();
 }
+// -------- WORKOUT GENERATOR --------
+
+function generateWorkout() {
+  const selectedMuscle = document.getElementById("muscle").value;
+
+  if (!selectedMuscle) {
+    alert("Please select a muscle group.");
+    return;
+  }
+
+  if (!currentWorkout) {
+    alert("Start a workout first.");
+    return;
+  }
+
+  const exercises = exerciseDatabase[selectedMuscle];
+
+  const shuffled = exercises
+    .slice()
+    .sort(() => 0.5 - Math.random());
+
+  const numberToSelect = Math.min(5, shuffled.length);
+
+  for (let i = 0; i < numberToSelect; i++) {
+    currentWorkout.exercises.push({
+      muscle: selectedMuscle,
+      exercise: shuffled[i].name,
+      sets: "",
+      reps: "",
+      weight: ""
+    });
+  }
+
+  alert("Workout generated!");
+}
