@@ -171,6 +171,7 @@ function saveExercise() {
   };
 
   currentWorkout.exercises.push(entry);
+  renderActiveWorkout();
   alert("Exercise added.");
 }
 // -------- TAB NAVIGATION --------
