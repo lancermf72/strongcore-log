@@ -289,6 +289,8 @@ function deleteExercise(workoutIndex, exerciseIndex) {
 }
 // -------- WORKOUT GENERATOR --------
 
+// -------- WORKOUT GENERATOR (REPLACE MODE) --------
+
 function generateWorkout() {
   const selectedMuscle = document.getElementById("muscle").value;
 
@@ -301,6 +303,9 @@ function generateWorkout() {
     alert("Start a workout first.");
     return;
   }
+
+  // Clear current workout exercises first
+  currentWorkout.exercises = [];
 
   const exercises = exerciseDatabase[selectedMuscle];
 
@@ -320,5 +325,5 @@ function generateWorkout() {
     });
   }
 
-  alert("Workout generated!");
+  alert("New workout generated!");
 }
