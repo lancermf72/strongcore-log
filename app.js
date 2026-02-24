@@ -33,11 +33,37 @@ const exerciseDatabase = {
     { name: "Walking Lunges", draSafe: false, hotel: true }
   ],
 
-  Core: [
-    { name: "Dead Bug ⭐", draSafe: true, hotel: true },
-    { name: "Heel Slides ⭐", draSafe: true, hotel: true },
-    { name: "Front Plank", draSafe: false, hotel: true }
-  ]
+  "Core": [
+
+  // ⭐ DRA-Friendly
+  { name: "Dead Bug ⭐" },
+  { name: "Heel Slides ⭐" },
+  { name: "Marching Bridge ⭐" },
+  { name: "Glute Bridge ⭐" },
+  { name: "Bird Dog ⭐" },
+  { name: "Side-Lying Clamshell ⭐" },
+  { name: "Standing Pallof Press ⭐" },
+  { name: "Modified Side Plank ⭐" },
+  { name: "Wall Plank ⭐" },
+  { name: "Farmer Carry ⭐" },
+  { name: "Suitcase Carry ⭐" },
+  { name: "Modified Plank ⭐" },
+
+  // Controlled Progression
+  { name: "Front Plank" },
+  { name: "Side Plank" },
+  { name: "Cable Woodchop" },
+  { name: "Cable Lift" },
+  { name: "Stability Ball Stir the Pot" },
+  { name: "Hanging Knee Raise" },
+  { name: "Reverse Crunch" },
+  { name: "Swiss Ball Rollout" },
+  { name: "Ab Wheel Rollout" },
+  { name: "Russian Twist" },
+  { name: "Medicine Ball Slams" },
+  { name: "V-Ups" },
+  { name: "Toes to Bar" }
+]
 };
 
 // -------- WORKOUT STATE --------
