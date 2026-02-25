@@ -288,11 +288,10 @@ function deleteExercise(workoutIndex, exerciseIndex) {
   localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
   renderHistory();
 }
-// -------- WORKOUT GENERATOR --------
-
-// -------- WORKOUT GENERATOR (REPLACE MODE) --------
+// -------- WORKOUT GENERATOR (CLEAN VERSION WITH HOTEL FILTER) --------
 
 function generateWorkout() {
+
   const selectedMuscle = document.getElementById("muscle").value;
 
   if (!selectedMuscle) {
@@ -305,18 +304,42 @@ function generateWorkout() {
     return;
   }
 
-  // Clear current workout exercises first
+  const bodyweightOnly = document.getElementById("bodyweightOnly").checked;
+  const dumbbellOnly = document.getElementById("dumbbellOnly").checked;
+
   currentWorkout.exercises = [];
 
-  const exercises = exerciseDatabase[selectedMuscle];
+  let exercises = exerciseDatabase[selectedMuscle];
 
-  const shuffled = exercises
-    .slice()
-    .sort(() => 0.5 - Math.random());
+  if (!exercises) {
+    alert("No exercises found.");
+    return;
+  }
 
-  const numberToSelect = Math.min(5, shuffled.length);
+  if (bodyweightOnly) {
+    exercises = exercises.filter(function(ex) {
+      return ex.equipment === "bodyweight";
+    });
+  }
 
-  for (let i = 0; i < numberToSelect; i++) {
+  if (dumbbellOnly) {
+    exercises = exercises.filter(function(ex) {
+      return ex.equipment === "dumbbell";
+    });
+  }
+
+  if (exercises.length === 0) {
+    alert("No exercises match selected filters.");
+    return;
+  }
+
+  const shuffled = exercises.slice().sort(function() {
+    return 0.5 - Math.random();
+  });
+
+  const count = Math.min(5, shuffled.length);
+
+  for (let i = 0; i < count; i++) {
     currentWorkout.exercises.push({
       muscle: selectedMuscle,
       exercise: shuffled[i].name,
@@ -326,7 +349,7 @@ function generateWorkout() {
     });
   }
 
-  alert("New workout generated!");
+  alert("New filtered workout generated!");
   renderActiveWorkout();
 }
 // -------- ACTIVE WORKOUT DISPLAY --------
