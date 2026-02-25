@@ -84,3 +84,9 @@ nav {
   background: var(--card);
   padding: 0.5rem 0;
 }
+.exercise-card {
+  background: var(--card-bg, #f2f2f2);
+  padding: 15px;
+  border-radius: 10px;
+  margin-bottom: 15px;
+}
