@@ -356,21 +356,21 @@ function renderActiveWorkout() {
     return;
   }
 
-  currentWorkout.exercises.forEach((exercise, index) => {
+  currentWorkout.exercises.forEach(function(exercise, index) {
     const card = document.createElement("div");
     card.className = "exercise-card";
 
     card.innerHTML = `
-      <h3>${JSON.stringify(exercise)}</h3>
+      <h3>${exercise.name || exercise.exercise}</h3>
 
       <label>Sets</label>
-      <input type="number" id="sets-${index}" min="1" />
+      <input type="number" id="sets-${index}" min="1">
 
       <label>Reps</label>
-      <input type="number" id="reps-${index}" min="1" />
+      <input type="number" id="reps-${index}" min="1">
 
       <label>Weight</label>
-      <input type="number" id="weight-${index}" min="0" />
+      <input type="number" id="weight-${index}" min="0">
 
       <button onclick="saveExerciseFromCard(${index})">
         Save
@@ -383,38 +383,4 @@ function renderActiveWorkout() {
 
     container.appendChild(card);
   });
-}
-function saveExerciseFromCard(index) {
-  const sets = document.getElementById(`sets-${index}`).value;
-  const reps = document.getElementById(`reps-${index}`).value;
-  const weight = document.getElementById(`weight-${index}`).value;
-
-  if (!sets || !reps) {
-    alert("Please enter sets and reps.");
-    return;
-  }
-
-  const exercise = currentWorkout.exercises[index];
-
-  const entry = {
-    name: exercise.name,
-    sets,
-    reps,
-    weight,
-    date: new Date().toISOString()
-  };
-
-  workoutSessions.push({
-    date: new Date().toLocaleString(),
-    exercises: [entry]
-  });
-
-  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
-
-  alert("Exercise saved!");
-}
-
-function removeExerciseFromWorkout(index) {
-  currentWorkout.exercises.splice(index, 1);
-  renderActiveWorkout();
 }
