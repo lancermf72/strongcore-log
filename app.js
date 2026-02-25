@@ -361,7 +361,11 @@ function renderActiveWorkout() {
     card.className = "exercise-card";
 
     card.innerHTML = `
-      <h3>${exercise.name || exercise.exercise}</h3>
+      <h3>
+  ${exercise.name || exercise.exercise}
+  ${exercise.draFriendly ? " ⭐" : ""}
+  ${exercise.hotelFriendly ? " 🏨" : ""}
+</h3>
 
       <label>Sets</label>
       <input type="number" id="sets-${index}" min="1">
