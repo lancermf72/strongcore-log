@@ -353,11 +353,8 @@ function generateWorkout() {
   renderActiveWorkout();
 }
 // -------- ACTIVE WORKOUT DISPLAY --------
-
 function renderActiveWorkout() {
   const container = document.getElementById("activeWorkout");
-  if (!container) return;
-
   container.innerHTML = "";
 
   if (!currentWorkout || currentWorkout.exercises.length === 0) {
@@ -365,9 +362,65 @@ function renderActiveWorkout() {
     return;
   }
 
-  currentWorkout.exercises.forEach(function(ex) {
-    const div = document.createElement("div");
-    div.textContent = ex.exercise;
-    container.appendChild(div);
+  currentWorkout.exercises.forEach((exercise, index) => {
+    const card = document.createElement("div");
+    card.className = "exercise-card";
+
+    card.innerHTML = `
+      <h3>${exercise.name}</h3>
+
+      <label>Sets</label>
+      <input type="number" id="sets-${index}" min="1" />
+
+      <label>Reps</label>
+      <input type="number" id="reps-${index}" min="1" />
+
+      <label>Weight</label>
+      <input type="number" id="weight-${index}" min="0" />
+
+      <button onclick="saveExerciseFromCard(${index})">
+        Save
+      </button>
+
+      <button onclick="removeExerciseFromWorkout(${index})">
+        Remove
+      </button>
+    `;
+
+    container.appendChild(card);
   });
+}
+function saveExerciseFromCard(index) {
+  const sets = document.getElementById(`sets-${index}`).value;
+  const reps = document.getElementById(`reps-${index}`).value;
+  const weight = document.getElementById(`weight-${index}`).value;
+
+  if (!sets || !reps) {
+    alert("Please enter sets and reps.");
+    return;
+  }
+
+  const exercise = currentWorkout.exercises[index];
+
+  const entry = {
+    name: exercise.name,
+    sets,
+    reps,
+    weight,
+    date: new Date().toISOString()
+  };
+
+  workoutSessions.push({
+    date: new Date().toLocaleString(),
+    exercises: [entry]
+  });
+
+  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
+
+  alert("Exercise saved!");
+}
+
+function removeExerciseFromWorkout(index) {
+  currentWorkout.exercises.splice(index, 1);
+  renderActiveWorkout();
 }
