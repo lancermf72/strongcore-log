@@ -361,7 +361,7 @@ function renderActiveWorkout() {
     card.className = "exercise-card";
 
     card.innerHTML = `
-      <h3>${exercise.name}</h3>
+      <h3>${JSON.stringify(exercise)}</h3>
 
       <label>Sets</label>
       <input type="number" id="sets-${index}" min="1" />
