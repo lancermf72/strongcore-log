@@ -340,14 +340,8 @@ function generateWorkout() {
   const count = Math.min(5, shuffled.length);
 
   for (let i = 0; i < count; i++) {
-    currentWorkout.exercises.push({
-      muscle: selectedMuscle,
-      exercise: shuffled[i].name,
-      sets: "",
-      reps: "",
-      weight: ""
-    });
-  }
+  currentWorkout.exercises.push(shuffled[i]);
+}
 
   alert("New filtered workout generated!");
   renderActiveWorkout();
