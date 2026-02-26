@@ -35,34 +35,37 @@ const exerciseDatabase = {
 
   "Core": [
 
-  // ⭐ DRA-Friendly
-  { name: "Dead Bug ⭐" },
-  { name: "Heel Slides ⭐" },
-  { name: "Marching Bridge ⭐" },
-  { name: "Glute Bridge ⭐" },
-  { name: "Bird Dog ⭐" },
-  { name: "Side-Lying Clamshell ⭐" },
-  { name: "Standing Pallof Press ⭐" },
-  { name: "Modified Side Plank ⭐" },
-  { name: "Wall Plank ⭐" },
-  { name: "Farmer Carry ⭐" },
-  { name: "Suitcase Carry ⭐" },
-  { name: "Modified Plank ⭐" },
+  // DRA Safe
+  { name: "Dead Bug", draLevel: "safe" },
+  { name: "Heel Slides", draLevel: "safe" },
+  { name: "Marching Bridge", draLevel: "safe" },
+  { name: "Glute Bridge", draLevel: "safe" },
+  { name: "Bird Dog", draLevel: "safe" },
+  { name: "Side-Lying Clamshell", draLevel: "safe" },
+  { name: "Standing Pallof Press", draLevel: "safe" },
+  { name: "Modified Side Plank", draLevel: "safe" },
+  { name: "Wall Plank", draLevel: "safe" },
+  { name: "Farmer Carry", draLevel: "safe" },
+  { name: "Suitcase Carry", draLevel: "safe" },
+  { name: "Modified Plank", draLevel: "safe" },
 
-  // Controlled Progression
-  { name: "Front Plank" },
-  { name: "Side Plank" },
-  { name: "Cable Woodchop" },
-  { name: "Cable Lift" },
-  { name: "Stability Ball Stir the Pot" },
-  { name: "Hanging Knee Raise" },
-  { name: "Reverse Crunch" },
-  { name: "Swiss Ball Rollout" },
-  { name: "Ab Wheel Rollout" },
-  { name: "Russian Twist" },
-  { name: "Medicine Ball Slams" },
-  { name: "V-Ups" },
-  { name: "Toes to Bar" }
+  // Use Caution
+  { name: "Front Plank", draLevel: "caution" },
+  { name: "Side Plank", draLevel: "caution" },
+  { name: "Cable Woodchop", draLevel: "caution" },
+  { name: "Cable Lift", draLevel: "caution" },
+  { name: "Stability Ball Stir the Pot", draLevel: "caution" },
+  { name: "Hanging Knee Raise", draLevel: "caution" },
+  { name: "Reverse Crunch", draLevel: "caution" },
+
+  // Avoid (for active DRA phase)
+  { name: "Swiss Ball Rollout", draLevel: "avoid" },
+  { name: "Ab Wheel Rollout", draLevel: "avoid" },
+  { name: "Russian Twist", draLevel: "avoid" },
+  { name: "Medicine Ball Slams", draLevel: "avoid" },
+  { name: "V-Ups", draLevel: "avoid" },
+  { name: "Toes to Bar", draLevel: "avoid" }
+
 ]
 };
 
