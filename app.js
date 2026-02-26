@@ -357,7 +357,11 @@ function generateWorkout() {
 }
 // -------- ACTIVE WORKOUT DISPLAY --------
 function renderActiveWorkout() {
+
   const container = document.getElementById("activeWorkout");
+
+  if (!container) return;
+
   container.innerHTML = "";
 
   if (!currentWorkout || currentWorkout.exercises.length === 0) {
@@ -366,34 +370,30 @@ function renderActiveWorkout() {
   }
 
   currentWorkout.exercises.forEach(function(exercise, index) {
+
     const card = document.createElement("div");
     card.className = "exercise-card";
 
+    let badge = "";
+
+    if (exercise.draLevel === "safe") {
+      badge = " ⭐";
+    } else if (exercise.draLevel === "caution") {
+      badge = " ⚠️";
+    } else if (exercise.draLevel === "avoid") {
+      badge = " ❌";
+    }
+
     card.innerHTML = `
-      <h3>
-  ${exercise.name || exercise.exercise}
-  ${exercise.draFriendly ? " ⭐" : ""}
-  ${exercise.hotelFriendly ? " 🏨" : ""}
-</h3>
-
-      <label>Sets</label>
-      <input type="number" id="sets-${index}" min="1">
-
-      <label>Reps</label>
-      <input type="number" id="reps-${index}" min="1">
-
-      <label>Weight</label>
-      <input type="number" id="weight-${index}" min="0">
-
-      <button onclick="saveExerciseFromCard(${index})">
-        Save
-      </button>
-
-      <button onclick="removeExerciseFromWorkout(${index})">
-        Remove
-      </button>
+      <h3>${exercise.name}${badge}</h3>
+      <p>Muscle: ${exercise.muscle}</p>
+      <p>Sets: ${exercise.sets || "-"}</p>
+      <p>Reps: ${exercise.reps || "-"}</p>
+      <p>Weight: ${exercise.weight || "-"}</p>
     `;
 
     container.appendChild(card);
+
   });
+
 }
