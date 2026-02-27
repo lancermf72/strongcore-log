@@ -301,7 +301,8 @@ function generateWorkout() {
 
   const bodyweightOnly = document.getElementById("bodyweightOnly").checked;
   const dumbbellOnly = document.getElementById("dumbbellOnly").checked;
-
+const draSafeMode = document.getElementById("draSafeMode").checked;
+  
   currentWorkout.exercises = [];
 
   let exercises = exerciseDatabase[selectedMuscle];
