@@ -334,15 +334,19 @@ function generateWorkout() {
 
   const count = Math.min(5, shuffled.length);
 
+for (let i = 0; i < count; i++) {
+
   currentWorkout.exercises.push({
-  muscle: selectedMuscle,
-  name: shuffled[i].name,
-  draLevel: shuffled[i].draLevel || null,
-  hotelFriendly: shuffled[i].hotelFriendly || false,
-  sets: "",
-  reps: "",
-  weight: ""
-});
+    muscle: selectedMuscle,
+    name: shuffled[i].name,
+    draLevel: shuffled[i].draLevel || null,
+    hotelFriendly: shuffled[i].hotelFriendly || false,
+    sets: "",
+    reps: "",
+    weight: ""
+  });
+
+}
 
   alert("New filtered workout generated!");
   renderActiveWorkout();
