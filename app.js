@@ -368,13 +368,11 @@ function renderActiveWorkout() {
 
     let badge = "";
 
-    if (exercise.draLevel === "safe") {
-      badge = " ⭐";
-    } else if (exercise.draLevel === "caution") {
-      badge = " ⚠️";
-    } else if (exercise.draLevel === "avoid") {
-      badge = " ❌";
-    }
+if (exercise.draLevel === "safe") {
+  badge = " ⭐";
+} else if (exercise.draLevel === "caution") {
+  badge = " ⚠️";
+}
 
     card.innerHTML = `
       <h3>${exercise.name}${badge}</h3>
