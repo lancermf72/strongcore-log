@@ -33,9 +33,8 @@ const exerciseDatabase = {
     { name: "Walking Lunges", draSafe: false, hotel: true }
   ],
 
-  "Core": [
+"Core": [
 
-  // DRA Safe
   { name: "Dead Bug", draLevel: "safe" },
   { name: "Heel Slides", draLevel: "safe" },
   { name: "Marching Bridge", draLevel: "safe" },
@@ -49,22 +48,15 @@ const exerciseDatabase = {
   { name: "Suitcase Carry", draLevel: "safe" },
   { name: "Modified Plank", draLevel: "safe" },
 
-  // Use Caution
   { name: "Front Plank", draLevel: "caution" },
   { name: "Side Plank", draLevel: "caution" },
   { name: "Cable Woodchop", draLevel: "caution" },
   { name: "Cable Lift", draLevel: "caution" },
-  { name: "Stability Ball Stir the Pot", draLevel: "caution" },
-  { name: "Hanging Knee Raise", draLevel: "caution" },
-  { name: "Reverse Crunch", draLevel: "caution" },
 
-  // Avoid (for active DRA phase)
-  { name: "Swiss Ball Rollout", draLevel: "avoid" },
-  { name: "Ab Wheel Rollout", draLevel: "avoid" },
-  { name: "Russian Twist", draLevel: "avoid" },
-  { name: "Medicine Ball Slams", draLevel: "avoid" },
-  { name: "V-Ups", draLevel: "avoid" },
-  { name: "Toes to Bar", draLevel: "avoid" }
+  { name: "Swiss Ball Rollout" },
+  { name: "Ab Wheel Rollout" },
+  { name: "Russian Twist" },
+  { name: "V-Ups" }
 
 ]
 };
