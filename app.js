@@ -13,10 +13,10 @@ const exerciseDatabase = {
 ],
 
   Back: [
-    { name: "Lat Pulldown", draSafe: false, hotel: false },
-    { name: "Seated Cable Row", draSafe: false, hotel: false },
-    { name: "Single Arm Dumbbell Row", draSafe: false, hotel: true }
-  ],
+  { name: "Lat Pulldown", equipment: "cable", hotelFriendly: false },
+  { name: "Seated Cable Row", equipment: "cable", hotelFriendly: false },
+  { name: "Single Arm Dumbbell Row", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true }
+],
 
   Shoulders: [
     { name: "Dumbbell Shoulder Press", draSafe: false, hotel: true },
