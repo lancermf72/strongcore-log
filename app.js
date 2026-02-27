@@ -7,10 +7,10 @@
 const exerciseDatabase = {
 
   Chest: [
-    { name: "Barbell Bench Press", draSafe: false, hotel: false },
-    { name: "Dumbbell Bench Press", draSafe: false, hotel: true },
-    { name: "Push-Up", draSafe: false, hotel: true }
-  ],
+  { name: "Barbell Bench Press", equipment: "barbell", hotelFriendly: false },
+  { name: "Dumbbell Bench Press", equipment: "dumbbell", hotelFriendly: true },
+  { name: "Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true }
+],
 
   Back: [
     { name: "Lat Pulldown", draSafe: false, hotel: false },
