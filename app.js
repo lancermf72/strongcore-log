@@ -324,6 +324,12 @@ const draSafeMode = document.getElementById("draSafeMode").checked;
     });
   }
 
+if (draSafeMode) {
+  exercises = exercises.filter(function(ex) {
+    return ex.draLevel === "safe" || ex.draLevel === "caution";
+  });
+}
+  
   if (exercises.length === 0) {
     alert("No exercises match selected filters.");
     return;
