@@ -305,7 +305,7 @@ const draSafeMode = document.getElementById("draSafeMode").checked;
   
   currentWorkout.exercises = [];
 
-  let exercises = exerciseDatabase[selectedMuscle];
+  let exercises = exerciseDatabase[selectedMuscle].slice();
 
   if (!exercises) {
     alert("No exercises found.");
