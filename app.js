@@ -19,9 +19,9 @@ const exerciseDatabase = {
 ],
 
   Shoulders: [
-    { name: "Dumbbell Shoulder Press", draSafe: false, hotel: true },
-    { name: "Lateral Raise", draSafe: false, hotel: true }
-  ],
+  { name: "Dumbbell Shoulder Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Lateral Raise", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true }
+],
 
   Arms: [
     { name: "Dumbbell Curl", draSafe: false, hotel: true },
