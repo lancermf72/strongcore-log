@@ -31,9 +31,11 @@ const exerciseDatabase = {
 ],
 
   Legs: [
-    { name: "Goblet Squat", draSafe: false, hotel: true },
-    { name: "Walking Lunges", draSafe: false, hotel: true }
-  ],
+  { name: "Goblet Squat", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Walking Lunges", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Dumbbell Romanian Deadlift", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Bodyweight Squat", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true }
+],
 
 "Core": [
 
