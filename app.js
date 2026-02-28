@@ -24,9 +24,11 @@ const exerciseDatabase = {
 ],
 
   Arms: [
-    { name: "Dumbbell Curl", draSafe: false, hotel: true },
-    { name: "Triceps Pushdown", draSafe: false, hotel: false }
-  ],
+  { name: "Dumbbell Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Hammer Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Triceps Pushdown", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Overhead Dumbbell Triceps Extension", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }
+],
 
   Legs: [
     { name: "Goblet Squat", draSafe: false, hotel: true },
