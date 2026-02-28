@@ -308,7 +308,7 @@ const draSafeMode = document.getElementById("draSafeMode").checked;
   currentWorkout.exercises = [];
 
   let exercises = exerciseDatabase[selectedMuscle].slice();
-console.log("Initial exercises:", exercises);
+
   if (!exercises) {
     alert("No exercises found.");
     return;
@@ -336,7 +336,7 @@ if (draSafeMode) {
     alert("No exercises match selected filters.");
     return;
   }
-console.log("After filters:", exercises);
+
   const shuffled = exercises.slice().sort(function() {
     return 0.5 - Math.random();
   });
