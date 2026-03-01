@@ -10,12 +10,20 @@ const exerciseDatabase = {
   { name: "Barbell Bench Press", equipment: "barbell", hotelFriendly: false },
   { name: "Dumbbell Bench Press", equipment: "dumbbell", hotelFriendly: true },
   { name: "Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true }
+     
 ],
 
   Back: [
   { name: "Lat Pulldown", equipment: "cable", hotelFriendly: false },
   { name: "Seated Cable Row", equipment: "cable", hotelFriendly: false },
-  { name: "Single Arm Dumbbell Row", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true }
+  { name: "Single Arm Dumbbell Row", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Bent Over Barbell Row", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Chest Supported Dumbbell Row", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Resistance Band Row", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Pull-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: false },
+  { name: "Assisted Pull-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: false },
+  { name: "Face Pull", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Single Arm Cable Row", equipment: "cable", draLevel: "safe", hotelFriendly: false }
 ],
 
   Shoulders: [
@@ -34,7 +42,14 @@ const exerciseDatabase = {
   { name: "Goblet Squat", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
   { name: "Walking Lunges", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
   { name: "Dumbbell Romanian Deadlift", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Bodyweight Squat", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true }
+  { name: "Bodyweight Squat", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Split Squat", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Rear Foot Elevated Split Squat", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Step-Ups", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Barbell Back Squat", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Leg Press", equipment: "machine", draLevel: "caution", hotelFriendly: false },
+  { name: "Hip Thrust", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Glute Bridge March", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true }
 ],
 
 "Core": [
