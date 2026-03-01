@@ -7,10 +7,18 @@
 const exerciseDatabase = {
 
   Chest: [
-  { name: "Barbell Bench Press", equipment: "barbell", hotelFriendly: false },
-  { name: "Dumbbell Bench Press", equipment: "dumbbell", hotelFriendly: true },
-  { name: "Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true }
-     
+  { name: "Barbell Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Incline Barbell Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Dumbbell Bench Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Incline Dumbbell Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Incline Push-Up", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Decline Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Chest Fly (Dumbbell)", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Chest Fly (Machine)", equipment: "machine", draLevel: "caution", hotelFriendly: false },
+  { name: "Cable Chest Fly", equipment: "cable", draLevel: "caution", hotelFriendly: false },
+  { name: "Close-Grip Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Single Arm Dumbbell Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }
 ],
 
   Back: [
@@ -42,7 +50,7 @@ const exerciseDatabase = {
   { name: "Dumbbell Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
   { name: "Hammer Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
   { name: "Triceps Pushdown", equipment: "cable", draLevel: "safe", hotelFriendly: false },
-  { name: "Overhead Dumbbell Triceps Extension", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }.
+  { name: "Overhead Dumbbell Triceps Extension", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
   { name: "EZ Bar Curl", equipment: "barbell", draLevel: "safe", hotelFriendly: false },
   { name: "Cable Curl", equipment: "cable", draLevel: "safe", hotelFriendly: false },
   { name: "Concentration Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
