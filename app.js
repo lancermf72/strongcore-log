@@ -28,14 +28,28 @@ const exerciseDatabase = {
 
   Shoulders: [
   { name: "Dumbbell Shoulder Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Lateral Raise", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true }
+  { name: "Lateral Raise", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Arnold Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Front Raise", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Cable Lateral Raise", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Rear Delt Fly (Dumbbell)", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Rear Delt Fly (Machine)", equipment: "machine", draLevel: "safe", hotelFriendly: false },
+  { name: "Barbell Overhead Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Upright Row", equipment: "barbell", draLevel: "caution", hotelFriendly: false }
 ],
 
   Arms: [
   { name: "Dumbbell Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
   { name: "Hammer Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
   { name: "Triceps Pushdown", equipment: "cable", draLevel: "safe", hotelFriendly: false },
-  { name: "Overhead Dumbbell Triceps Extension", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }
+  { name: "Overhead Dumbbell Triceps Extension", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }.
+  { name: "EZ Bar Curl", equipment: "barbell", draLevel: "safe", hotelFriendly: false },
+  { name: "Cable Curl", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Concentration Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Close-Grip Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Bench Dips", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Skull Crushers", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Cable Overhead Triceps Extension", equipment: "cable", draLevel: "caution", hotelFriendly: false }
 ],
 
   Legs: [
@@ -75,7 +89,14 @@ const exerciseDatabase = {
   { name: "Swiss Ball Rollout" },
   { name: "Ab Wheel Rollout" },
   { name: "Russian Twist" },
-  { name: "V-Ups" }
+  { name: "V-Ups" },
+  { name: "Stability Ball Dead Bug", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Half-Kneeling Pallof Press", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Tall Kneeling Cable Chop", equipment: "cable", draLevel: "caution", hotelFriendly: false },
+  { name: "Side Plank with Reach", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Bear Crawl (Slow Controlled)", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Dead Bug with Resistance Band", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Weighted Carry (Heavy)", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }
 
 ]
 };
