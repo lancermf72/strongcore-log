@@ -419,7 +419,9 @@ function renderActiveWorkout() {
     container.innerHTML = "<p>No exercises yet.</p>";
     return;
   }
-
+function updateWorkoutField(index, field, value) {
+  currentWorkout.exercises[index][field] = value;
+}
   currentWorkout.exercises.forEach(function(exercise, index) {
 
     const card = document.createElement("div");
@@ -434,12 +436,21 @@ if (exercise.draLevel === "safe") {
 }
 
     card.innerHTML = `
-      <h3>${exercise.name}${badge}</h3>
-      <p>Muscle: ${exercise.muscle}</p>
-      <p>Sets: ${exercise.sets || "-"}</p>
-      <p>Reps: ${exercise.reps || "-"}</p>
-      <p>Weight: ${exercise.weight || "-"}</p>
-    `;
+  <h3>${exercise.name} ${exercise.draLevel === "caution" ? "⚠️" : ""}</h3>
+  <p>Muscle: ${exercise.muscle}</p>
+
+  <label>Sets:</label>
+  <input type="number" value="${exercise.sets}" 
+    onchange="updateWorkoutField(${index}, 'sets', this.value)" />
+
+  <label>Reps:</label>
+  <input type="number" value="${exercise.reps}" 
+    onchange="updateWorkoutField(${index}, 'reps', this.value)" />
+
+  <label>Weight:</label>
+  <input type="number" value="${exercise.weight}" 
+    onchange="updateWorkoutField(${index}, 'weight', this.value)" />
+`;
 
     container.appendChild(card);
 
