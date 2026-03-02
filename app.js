@@ -217,6 +217,22 @@ function saveExercise() {
   renderActiveWorkout();
   alert("Exercise added.");
 }
+function saveWorkout() {
+  if (!currentWorkout || currentWorkout.exercises.length === 0) {
+    alert("No workout to save.");
+    return;
+  }
+
+  workoutHistory.push(currentWorkout);
+
+  currentWorkout = {
+    date: new Date().toLocaleDateString(),
+    exercises: []
+  };
+
+  renderActiveWorkout();
+  alert("Workout saved.");
+}
 // -------- TAB NAVIGATION --------
 
 function showTab(tabId) {
