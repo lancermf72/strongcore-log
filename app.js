@@ -395,3 +395,17 @@ function renderExerciseLibrary() {
     });
   }
 }
+// -------- TAB SWITCHING --------
+
+function showTab(tabId) {
+  const sections = document.querySelectorAll("main section");
+
+  sections.forEach(section => {
+    section.classList.remove("active");
+  });
+
+  const activeSection = document.getElementById(tabId);
+  if (activeSection) {
+    activeSection.classList.add("active");
+  }
+}
