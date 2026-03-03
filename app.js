@@ -213,7 +213,10 @@ function generateWorkout() {
     return;
   }
 
-  currentWorkout.exercises = [];
+  currentWorkout = {
+  date: new Date().toLocaleDateString(),
+  exercises: []
+};
 
   const shuffled = exercises.sort(() => 0.5 - Math.random());
   const count = Math.min(5, shuffled.length);
