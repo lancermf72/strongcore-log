@@ -4,8 +4,111 @@
 
 
 // -------- EXERCISE DATABASE --------
-// ⚠️ KEEP YOUR CURRENT DATABASE HERE EXACTLY AS YOU HAVE IT
-// (Paste your full exerciseDatabase object here and remove this comment)
+
+const exerciseDatabase = {
+
+  Chest: [
+  { name: "Barbell Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Incline Barbell Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Dumbbell Bench Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Incline Dumbbell Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Incline Push-Up", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Decline Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Chest Fly (Dumbbell)", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Chest Fly (Machine)", equipment: "machine", draLevel: "caution", hotelFriendly: false },
+  { name: "Cable Chest Fly", equipment: "cable", draLevel: "caution", hotelFriendly: false },
+  { name: "Close-Grip Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Single Arm Dumbbell Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }
+],
+
+  Back: [
+  { name: "Lat Pulldown", equipment: "cable", hotelFriendly: false },
+  { name: "Seated Cable Row", equipment: "cable", hotelFriendly: false },
+  { name: "Single Arm Dumbbell Row", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Bent Over Barbell Row", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Chest Supported Dumbbell Row", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Resistance Band Row", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Pull-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: false },
+  { name: "Assisted Pull-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: false },
+  { name: "Face Pull", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Single Arm Cable Row", equipment: "cable", draLevel: "safe", hotelFriendly: false }
+],
+
+  Shoulders: [
+  { name: "Dumbbell Shoulder Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Lateral Raise", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Arnold Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Front Raise", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Cable Lateral Raise", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Rear Delt Fly (Dumbbell)", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Rear Delt Fly (Machine)", equipment: "machine", draLevel: "safe", hotelFriendly: false },
+  { name: "Barbell Overhead Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Upright Row", equipment: "barbell", draLevel: "caution", hotelFriendly: false }
+],
+
+  Arms: [
+  { name: "Dumbbell Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Hammer Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Triceps Pushdown", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Overhead Dumbbell Triceps Extension", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "EZ Bar Curl", equipment: "barbell", draLevel: "safe", hotelFriendly: false },
+  { name: "Cable Curl", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Concentration Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Close-Grip Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Bench Dips", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Skull Crushers", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Cable Overhead Triceps Extension", equipment: "cable", draLevel: "caution", hotelFriendly: false }
+],
+
+  Legs: [
+  { name: "Goblet Squat", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Walking Lunges", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Dumbbell Romanian Deadlift", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Bodyweight Squat", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Split Squat", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Rear Foot Elevated Split Squat", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
+  { name: "Step-Ups", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
+  { name: "Barbell Back Squat", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Leg Press", equipment: "machine", draLevel: "caution", hotelFriendly: false },
+  { name: "Hip Thrust", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
+  { name: "Glute Bridge March", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true }
+],
+
+"Core": [
+
+  { name: "Dead Bug", draLevel: "safe" },
+  { name: "Heel Slides", draLevel: "safe" },
+  { name: "Marching Bridge", draLevel: "safe" },
+  { name: "Glute Bridge", draLevel: "safe" },
+  { name: "Bird Dog", draLevel: "safe" },
+  { name: "Side-Lying Clamshell", draLevel: "safe" },
+  { name: "Standing Pallof Press", draLevel: "safe" },
+  { name: "Modified Side Plank", draLevel: "safe" },
+  { name: "Wall Plank", draLevel: "safe" },
+  { name: "Farmer Carry", draLevel: "safe" },
+  { name: "Suitcase Carry", draLevel: "safe" },
+  { name: "Modified Plank", draLevel: "safe" },
+
+  { name: "Front Plank", draLevel: "caution" },
+  { name: "Side Plank", draLevel: "caution" },
+  { name: "Cable Woodchop", draLevel: "caution" },
+  { name: "Cable Lift", draLevel: "caution" },
+
+  { name: "Swiss Ball Rollout" },
+  { name: "Ab Wheel Rollout" },
+  { name: "Russian Twist" },
+  { name: "V-Ups" },
+  { name: "Stability Ball Dead Bug", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Half-Kneeling Pallof Press", equipment: "cable", draLevel: "safe", hotelFriendly: false },
+  { name: "Tall Kneeling Cable Chop", equipment: "cable", draLevel: "caution", hotelFriendly: false },
+  { name: "Side Plank with Reach", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Bear Crawl (Slow Controlled)", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
+  { name: "Dead Bug with Resistance Band", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
+  { name: "Weighted Carry (Heavy)", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }
+
+]
+};
 
 
 // -------- WORKOUT STATE --------
