@@ -1,131 +1,32 @@
 // ===============================
-// STRONGCORE LOG - CLEAN STABLE VERSION
+// STRONGCORE LOG - CLEAN STABLE VERSION (SIMPLIFIED FLOW)
 // ===============================
 
+
 // -------- EXERCISE DATABASE --------
+// ⚠️ KEEP YOUR CURRENT DATABASE HERE EXACTLY AS YOU HAVE IT
+// (Paste your full exerciseDatabase object here and remove this comment)
 
-const exerciseDatabase = {
-
-  Chest: [
-  { name: "Barbell Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
-  { name: "Incline Barbell Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
-  { name: "Dumbbell Bench Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Incline Dumbbell Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
-  { name: "Incline Push-Up", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
-  { name: "Decline Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
-  { name: "Chest Fly (Dumbbell)", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Chest Fly (Machine)", equipment: "machine", draLevel: "caution", hotelFriendly: false },
-  { name: "Cable Chest Fly", equipment: "cable", draLevel: "caution", hotelFriendly: false },
-  { name: "Close-Grip Bench Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
-  { name: "Single Arm Dumbbell Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }
-],
-
-  Back: [
-  { name: "Lat Pulldown", equipment: "cable", hotelFriendly: false },
-  { name: "Seated Cable Row", equipment: "cable", hotelFriendly: false },
-  { name: "Single Arm Dumbbell Row", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Bent Over Barbell Row", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
-  { name: "Chest Supported Dumbbell Row", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Resistance Band Row", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
-  { name: "Pull-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: false },
-  { name: "Assisted Pull-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: false },
-  { name: "Face Pull", equipment: "cable", draLevel: "safe", hotelFriendly: false },
-  { name: "Single Arm Cable Row", equipment: "cable", draLevel: "safe", hotelFriendly: false }
-],
-
-  Shoulders: [
-  { name: "Dumbbell Shoulder Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Lateral Raise", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Arnold Press", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Front Raise", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Cable Lateral Raise", equipment: "cable", draLevel: "safe", hotelFriendly: false },
-  { name: "Rear Delt Fly (Dumbbell)", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Rear Delt Fly (Machine)", equipment: "machine", draLevel: "safe", hotelFriendly: false },
-  { name: "Barbell Overhead Press", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
-  { name: "Upright Row", equipment: "barbell", draLevel: "caution", hotelFriendly: false }
-],
-
-  Arms: [
-  { name: "Dumbbell Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Hammer Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Triceps Pushdown", equipment: "cable", draLevel: "safe", hotelFriendly: false },
-  { name: "Overhead Dumbbell Triceps Extension", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "EZ Bar Curl", equipment: "barbell", draLevel: "safe", hotelFriendly: false },
-  { name: "Cable Curl", equipment: "cable", draLevel: "safe", hotelFriendly: false },
-  { name: "Concentration Curl", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Close-Grip Push-Up", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
-  { name: "Bench Dips", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
-  { name: "Skull Crushers", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
-  { name: "Cable Overhead Triceps Extension", equipment: "cable", draLevel: "caution", hotelFriendly: false }
-],
-
-  Legs: [
-  { name: "Goblet Squat", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Walking Lunges", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
-  { name: "Dumbbell Romanian Deadlift", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Bodyweight Squat", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
-  { name: "Split Squat", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
-  { name: "Rear Foot Elevated Split Squat", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true },
-  { name: "Step-Ups", equipment: "dumbbell", draLevel: "safe", hotelFriendly: true },
-  { name: "Barbell Back Squat", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
-  { name: "Leg Press", equipment: "machine", draLevel: "caution", hotelFriendly: false },
-  { name: "Hip Thrust", equipment: "barbell", draLevel: "caution", hotelFriendly: false },
-  { name: "Glute Bridge March", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true }
-],
-
-"Core": [
-
-  { name: "Dead Bug", draLevel: "safe" },
-  { name: "Heel Slides", draLevel: "safe" },
-  { name: "Marching Bridge", draLevel: "safe" },
-  { name: "Glute Bridge", draLevel: "safe" },
-  { name: "Bird Dog", draLevel: "safe" },
-  { name: "Side-Lying Clamshell", draLevel: "safe" },
-  { name: "Standing Pallof Press", draLevel: "safe" },
-  { name: "Modified Side Plank", draLevel: "safe" },
-  { name: "Wall Plank", draLevel: "safe" },
-  { name: "Farmer Carry", draLevel: "safe" },
-  { name: "Suitcase Carry", draLevel: "safe" },
-  { name: "Modified Plank", draLevel: "safe" },
-
-  { name: "Front Plank", draLevel: "caution" },
-  { name: "Side Plank", draLevel: "caution" },
-  { name: "Cable Woodchop", draLevel: "caution" },
-  { name: "Cable Lift", draLevel: "caution" },
-
-  { name: "Swiss Ball Rollout" },
-  { name: "Ab Wheel Rollout" },
-  { name: "Russian Twist" },
-  { name: "V-Ups" },
-  { name: "Stability Ball Dead Bug", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
-  { name: "Half-Kneeling Pallof Press", equipment: "cable", draLevel: "safe", hotelFriendly: false },
-  { name: "Tall Kneeling Cable Chop", equipment: "cable", draLevel: "caution", hotelFriendly: false },
-  { name: "Side Plank with Reach", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
-  { name: "Bear Crawl (Slow Controlled)", equipment: "bodyweight", draLevel: "caution", hotelFriendly: true },
-  { name: "Dead Bug with Resistance Band", equipment: "bodyweight", draLevel: "safe", hotelFriendly: true },
-  { name: "Weighted Carry (Heavy)", equipment: "dumbbell", draLevel: "caution", hotelFriendly: true }
-
-]
-};
 
 // -------- WORKOUT STATE --------
 
 let workoutSessions = JSON.parse(localStorage.getItem("workoutSessions")) || [];
-let currentWorkout = null;
+let currentWorkout = {
+  id: Date.now(),
+  date: new Date(),
+  exercises: []
+};
+
 
 // -------- INIT --------
 
-document.addEventListener("DOMContentLoaded", function() {
+document.addEventListener("DOMContentLoaded", function () {
   populateMuscles();
   setupListeners();
-  addWorkoutButton();
   renderExerciseLibrary();
   renderHistory();
-  
-  document.getElementById("generateBtn")
-  .addEventListener("click", generateWorkout);
 });
+
 
 // -------- DROPDOWNS --------
 
@@ -149,10 +50,9 @@ function populateExercises() {
   exerciseSelect.innerHTML = "";
 
   const exercises = exerciseDatabase[muscle];
-
   if (!exercises) return;
 
-  exercises.forEach(function(exercise) {
+  exercises.forEach(function (exercise) {
     const option = document.createElement("option");
     option.value = exercise.name;
     option.textContent = exercise.name;
@@ -160,99 +60,187 @@ function populateExercises() {
   });
 }
 
+
 // -------- LISTENERS --------
 
 function setupListeners() {
   document.getElementById("muscle").addEventListener("change", populateExercises);
-  document.getElementById("saveBtn").addEventListener("click", saveExercise);
+  document.getElementById("generateBtn").addEventListener("click", generateWorkout);
 }
 
-// -------- WORKOUT BUTTON --------
 
-function addWorkoutButton() {
-  const logSection = document.getElementById("log");
-  const button = document.createElement("button");
-  button.id = "workoutToggle";
-  button.textContent = "Start Workout";
-  button.style.marginBottom = "10px";
+// -------- GENERATE WORKOUT --------
 
-  button.addEventListener("click", toggleWorkout);
+function generateWorkout() {
+  const selectedMuscle = document.getElementById("muscle").value;
+  const bodyweightOnly = document.getElementById("bodyweightOnly").checked;
+  const dumbbellOnly = document.getElementById("dumbbellOnly").checked;
+  const draSafeMode = document.getElementById("draSafeMode").checked;
 
-  logSection.insertBefore(button, logSection.firstChild);
-}
+  let exercises = exerciseDatabase[selectedMuscle].slice();
 
-function toggleWorkout() {
-  if (!currentWorkout) {
-    currentWorkout = {
-      id: Date.now(),
-      date: new Date(),
-      exercises: []
-    };
-    document.getElementById("workoutToggle").textContent = "End Workout";
-  } else {
-    workoutSessions.push(currentWorkout);
-    localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
-    currentWorkout = null;
-    document.getElementById("workoutToggle").textContent = "Start Workout";
-    renderHistory();
+  if (bodyweightOnly) {
+    exercises = exercises.filter(ex => ex.equipment === "bodyweight");
   }
-}
-// -------- SAVE --------
 
-function saveExercise() {
-  if (!currentWorkout) {
-    alert("Start a workout first.");
+  if (dumbbellOnly) {
+    exercises = exercises.filter(ex => ex.equipment === "dumbbell");
+  }
+
+  if (draSafeMode) {
+    exercises = exercises.filter(ex =>
+      ex.draLevel === "safe" || ex.draLevel === "caution"
+    );
+  }
+
+  if (exercises.length === 0) {
+    alert("No exercises match selected filters.");
     return;
   }
 
-  const entry = {
-    muscle: document.getElementById("muscle").value,
-    exercise: document.getElementById("exercise").value,
-    sets: document.getElementById("sets").value,
-    reps: document.getElementById("reps").value,
-    weight: document.getElementById("weight").value
-  };
+  currentWorkout.exercises = [];
 
-  currentWorkout.exercises.push(entry);
+  const shuffled = exercises.sort(() => 0.5 - Math.random());
+  const count = Math.min(5, shuffled.length);
+
+  for (let i = 0; i < count; i++) {
+    currentWorkout.exercises.push({
+      muscle: selectedMuscle,
+      name: shuffled[i].name,
+      draLevel: shuffled[i].draLevel || null,
+      sets: "",
+      reps: "",
+      weight: ""
+    });
+  }
+
   renderActiveWorkout();
-  alert("Exercise added.");
 }
+
+
+// -------- CUSTOM EXERCISE --------
+
+function addCustomExercise() {
+  const input = document.getElementById("customExerciseName");
+  const name = input.value.trim();
+
+  if (!name) return;
+
+  currentWorkout.exercises.push({
+    muscle: "Custom",
+    name: name,
+    sets: "",
+    reps: "",
+    weight: ""
+  });
+
+  input.value = "";
+  renderActiveWorkout();
+}
+
+
+// -------- ACTIVE WORKOUT DISPLAY --------
+
+function renderActiveWorkout() {
+  const container = document.getElementById("activeWorkout");
+  container.innerHTML = "";
+
+  if (currentWorkout.exercises.length === 0) {
+    container.innerHTML = "<p>No exercises yet.</p>";
+    return;
+  }
+
+  currentWorkout.exercises.forEach(function (exercise, index) {
+    const card = document.createElement("div");
+    card.className = "exercise-card";
+
+    const badge =
+      exercise.draLevel === "safe"
+        ? " ⭐"
+        : exercise.draLevel === "caution"
+        ? " ⚠️"
+        : "";
+
+    card.innerHTML = `
+      <h3>${exercise.name}${badge}</h3>
+      <p>Muscle: ${exercise.muscle}</p>
+
+      <label>Sets:</label>
+      <input type="number" value="${exercise.sets}"
+        onchange="updateWorkoutField(${index}, 'sets', this.value)" />
+
+      <label>Reps:</label>
+      <input type="number" value="${exercise.reps}"
+        onchange="updateWorkoutField(${index}, 'reps', this.value)" />
+
+      <label>Weight:</label>
+      <input type="number" value="${exercise.weight}"
+        onchange="updateWorkoutField(${index}, 'weight', this.value)" />
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+function updateWorkoutField(index, field, value) {
+  currentWorkout.exercises[index][field] = value;
+}
+
+
+// -------- FINISH WORKOUT --------
+
 function saveWorkout() {
-  if (!currentWorkout || currentWorkout.exercises.length === 0) {
+  if (currentWorkout.exercises.length === 0) {
     alert("No workout to save.");
     return;
   }
 
-  workoutHistory.push(currentWorkout);
+  workoutSessions.push(currentWorkout);
+  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
 
   currentWorkout = {
-    date: new Date().toLocaleDateString(),
+    id: Date.now(),
+    date: new Date(),
     exercises: []
   };
 
   renderActiveWorkout();
+  renderHistory();
   alert("Workout saved.");
 }
-// -------- TAB NAVIGATION --------
 
-function showTab(tabId) {
-  const sections = document.querySelectorAll("main section");
 
-  sections.forEach(function(section) {
-    section.classList.remove("active");
+// -------- HISTORY --------
+
+function renderHistory() {
+  const historyDiv = document.getElementById("historyList");
+  historyDiv.innerHTML = "";
+
+  workoutSessions.forEach(function (workout, workoutIndex) {
+    const workoutDiv = document.createElement("div");
+    workoutDiv.style.border = "1px solid #ccc";
+    workoutDiv.style.padding = "10px";
+    workoutDiv.style.marginBottom = "15px";
+
+    const date = new Date(workout.date).toLocaleDateString();
+    workoutDiv.innerHTML = `<h3>Workout - ${date}</h3>`;
+
+    workout.exercises.forEach(function (ex) {
+      const exDiv = document.createElement("div");
+      exDiv.textContent =
+        `${ex.name} - ${ex.sets}x${ex.reps} @ ${ex.weight || 0}`;
+      workoutDiv.appendChild(exDiv);
+    });
+
+    historyDiv.appendChild(workoutDiv);
   });
-
-  const activeSection = document.getElementById(tabId);
-  if (activeSection) {
-    activeSection.classList.add("active");
-  }
 }
+
+
 // -------- EXERCISE LIBRARY --------
 
 function renderExerciseLibrary() {
   const container = document.getElementById("exerciseCards");
-  if (!container) return;
-
   container.innerHTML = "";
 
   for (let muscle in exerciseDatabase) {
@@ -260,7 +248,7 @@ function renderExerciseLibrary() {
     header.textContent = muscle;
     container.appendChild(header);
 
-    exerciseDatabase[muscle].forEach(function(exercise) {
+    exerciseDatabase[muscle].forEach(function (exercise) {
       const link = document.createElement("a");
       link.href =
         "https://www.youtube.com/results?search_query=" +
@@ -268,208 +256,7 @@ function renderExerciseLibrary() {
       link.target = "_blank";
       link.textContent = exercise.name;
       link.style.display = "block";
-
       container.appendChild(link);
     });
   }
-}
-// -------- HISTORY --------
-
-// -------- HISTORY --------
-
-function renderHistory() {
-  const historyDiv = document.getElementById("historyList");
-  if (!historyDiv) return;
-
-  historyDiv.innerHTML = "";
-
-  workoutSessions.forEach(function(workout, workoutIndex) {
-    const workoutDiv = document.createElement("div");
-    workoutDiv.style.border = "1px solid #ccc";
-    workoutDiv.style.padding = "10px";
-    workoutDiv.style.marginBottom = "15px";
-
-    const date = new Date(workout.date).toLocaleDateString();
-
-    const header = document.createElement("h3");
-    header.textContent = "Workout - " + date;
-    workoutDiv.appendChild(header);
-
-    // Delete entire workout button
-    const deleteWorkoutBtn = document.createElement("button");
-    deleteWorkoutBtn.textContent = "Delete Workout";
-    deleteWorkoutBtn.style.marginBottom = "10px";
-    deleteWorkoutBtn.onclick = function() {
-      deleteWorkout(workoutIndex);
-    };
-    workoutDiv.appendChild(deleteWorkoutBtn);
-
-    // Exercises
-    workout.exercises.forEach(function(ex, exerciseIndex) {
-      const exDiv = document.createElement("div");
-      exDiv.style.display = "flex";
-      exDiv.style.justifyContent = "space-between";
-      exDiv.style.marginBottom = "5px";
-
-      const exText = document.createElement("span");
-      exText.textContent =
-        ex.exercise +
-        " - " +
-        ex.sets +
-        "x" +
-        ex.reps +
-        " @ " +
-        (ex.weight || 0);
-
-      const deleteExBtn = document.createElement("button");
-      deleteExBtn.textContent = "✖";
-      deleteExBtn.onclick = function() {
-        deleteExercise(workoutIndex, exerciseIndex);
-      };
-
-      exDiv.appendChild(exText);
-      exDiv.appendChild(deleteExBtn);
-
-      workoutDiv.appendChild(exDiv);
-    });
-
-    historyDiv.appendChild(workoutDiv);
-  });
-}
-function deleteWorkout(index) {
-  workoutSessions.splice(index, 1);
-  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
-  renderHistory();
-}
-
-function deleteExercise(workoutIndex, exerciseIndex) {
-  workoutSessions[workoutIndex].exercises.splice(exerciseIndex, 1);
-  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
-  renderHistory();
-}
-// -------- WORKOUT GENERATOR (CLEAN VERSION WITH HOTEL FILTER) --------
-
-function generateWorkout() {
-
-  const selectedMuscle = document.getElementById("muscle").value;
-
-  if (!selectedMuscle) {
-    alert("Please select a muscle group.");
-    return;
-  }
-
-  if (!currentWorkout) {
-    alert("Start a workout first.");
-    return;
-  }
-
-  const bodyweightOnly = document.getElementById("bodyweightOnly").checked;
-  const dumbbellOnly = document.getElementById("dumbbellOnly").checked;
-const draSafeMode = document.getElementById("draSafeMode").checked;
-  
-  currentWorkout.exercises = [];
-
-  let exercises = exerciseDatabase[selectedMuscle].slice();
-
-  if (!exercises) {
-    alert("No exercises found.");
-    return;
-  }
-
-  if (bodyweightOnly) {
-    exercises = exercises.filter(function(ex) {
-      return ex.equipment === "bodyweight";
-    });
-  }
-
-  if (dumbbellOnly) {
-    exercises = exercises.filter(function(ex) {
-      return ex.equipment === "dumbbell";
-    });
-  }
-
-if (draSafeMode) {
-  exercises = exercises.filter(function(ex) {
-    return ex.draLevel === "safe" || ex.draLevel === "caution";
-  });
-}
-  
-  if (exercises.length === 0) {
-    alert("No exercises match selected filters.");
-    return;
-  }
-
-  const shuffled = exercises.slice().sort(function() {
-    return 0.5 - Math.random();
-  });
-
-  const count = Math.min(5, shuffled.length);
-
-for (let i = 0; i < count; i++) {
-
-  currentWorkout.exercises.push({
-    muscle: selectedMuscle,
-    name: shuffled[i].name,
-    draLevel: shuffled[i].draLevel || null,
-    hotelFriendly: shuffled[i].hotelFriendly || false,
-    sets: "",
-    reps: "",
-    weight: ""
-  });
-
-}
-
-  alert("New filtered workout generated!");
-  renderActiveWorkout();
-}
-// -------- ACTIVE WORKOUT DISPLAY --------
-function renderActiveWorkout() {
-
-  const container = document.getElementById("activeWorkout");
-
-  if (!container) return;
-
-  container.innerHTML = "";
-
-  if (!currentWorkout || currentWorkout.exercises.length === 0) {
-    container.innerHTML = "<p>No exercises yet.</p>";
-    return;
-  }
-function updateWorkoutField(index, field, value) {
-  currentWorkout.exercises[index][field] = value;
-}
-  currentWorkout.exercises.forEach(function(exercise, index) {
-
-    const card = document.createElement("div");
-    card.className = "exercise-card";
-
-    let badge = "";
-
-if (exercise.draLevel === "safe") {
-  badge = " ⭐";
-} else if (exercise.draLevel === "caution") {
-  badge = " ⚠️";
-}
-
-    card.innerHTML = `
-  <h3>${exercise.name} ${exercise.draLevel === "caution" ? "⚠️" : ""}</h3>
-  <p>Muscle: ${exercise.muscle}</p>
-
-  <label>Sets:</label>
-  <input type="number" value="${exercise.sets}" 
-    onchange="updateWorkoutField(${index}, 'sets', this.value)" />
-
-  <label>Reps:</label>
-  <input type="number" value="${exercise.reps}" 
-    onchange="updateWorkoutField(${index}, 'reps', this.value)" />
-
-  <label>Weight:</label>
-  <input type="number" value="${exercise.weight}" 
-    onchange="updateWorkoutField(${index}, 'weight', this.value)" />
-`;
-
-    container.appendChild(card);
-
-  });
-
 }
