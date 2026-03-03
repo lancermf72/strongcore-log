@@ -169,6 +169,7 @@ function populateExercises() {
 function setupListeners() {
   document.getElementById("muscle").addEventListener("change", populateExercises);
   document.getElementById("generateBtn").addEventListener("click", generateWorkout);
+  document.getElementById("finishWorkoutBtn").addEventListener("click", saveWorkout);
 }
 
 
@@ -293,14 +294,16 @@ function updateWorkoutField(index, field, value) {
 // -------- FINISH WORKOUT --------
 
 function saveWorkout() {
-  if (currentWorkout.exercises.length === 0) {
+  if (!currentWorkout || currentWorkout.exercises.length === 0) {
     alert("No workout to save.");
     return;
   }
 
-  workoutSessions.push(currentWorkout);
+  // Push a copy of currentWorkout to avoid future edits affecting history
+  workoutSessions.push(JSON.parse(JSON.stringify(currentWorkout)));
   localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
 
+  // Reset currentWorkout for a new session
   currentWorkout = {
     id: Date.now(),
     date: new Date(),
