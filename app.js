@@ -114,6 +114,7 @@ const exerciseDatabase = {
 // -------- WORKOUT STATE --------
 
 let workoutSessions = JSON.parse(localStorage.getItem("workoutSessions")) || [];
+
 let currentWorkout = {
   id: Date.now(),
   date: new Date(),
@@ -128,6 +129,7 @@ document.addEventListener("DOMContentLoaded", function () {
   setupListeners();
   renderExerciseLibrary();
   renderHistory();
+  renderActiveWorkout();
 });
 
 
@@ -167,15 +169,23 @@ function populateExercises() {
 // -------- LISTENERS --------
 
 function setupListeners() {
-  document.getElementById("muscle").addEventListener("change", populateExercises);
-  document.getElementById("generateBtn").addEventListener("click", generateWorkout);
-  document.getElementById("finishWorkoutBtn").addEventListener("click", saveWorkout);
+  document.getElementById("muscle")
+    .addEventListener("change", populateExercises);
+
+  document.getElementById("generateBtn")
+    .addEventListener("click", generateWorkout);
+
+  const finishBtn = document.getElementById("finishWorkoutBtn");
+  if (finishBtn) {
+    finishBtn.addEventListener("click", saveWorkout);
+  }
 }
 
 
 // -------- GENERATE WORKOUT --------
 
 function generateWorkout() {
+
   const selectedMuscle = document.getElementById("muscle").value;
   const bodyweightOnly = document.getElementById("bodyweightOnly").checked;
   const dumbbellOnly = document.getElementById("dumbbellOnly").checked;
@@ -225,6 +235,7 @@ function generateWorkout() {
 // -------- CUSTOM EXERCISE --------
 
 function addCustomExercise() {
+
   const input = document.getElementById("customExerciseName");
   const name = input.value.trim();
 
@@ -246,6 +257,7 @@ function addCustomExercise() {
 // -------- ACTIVE WORKOUT DISPLAY --------
 
 function renderActiveWorkout() {
+
   const container = document.getElementById("activeWorkout");
   container.innerHTML = "";
 
@@ -255,6 +267,7 @@ function renderActiveWorkout() {
   }
 
   currentWorkout.exercises.forEach(function (exercise, index) {
+
     const card = document.createElement("div");
     card.className = "exercise-card";
 
@@ -294,16 +307,19 @@ function updateWorkoutField(index, field, value) {
 // -------- FINISH WORKOUT --------
 
 function saveWorkout() {
-  if (!currentWorkout || currentWorkout.exercises.length === 0) {
+
+  if (currentWorkout.exercises.length === 0) {
     alert("No workout to save.");
     return;
   }
 
-  // Push a copy of currentWorkout to avoid future edits affecting history
+  // Push deep copy to avoid mutation bugs
   workoutSessions.push(JSON.parse(JSON.stringify(currentWorkout)));
-  localStorage.setItem("workoutSessions", JSON.stringify(workoutSessions));
 
-  // Reset currentWorkout for a new session
+  localStorage.setItem("workoutSessions",
+    JSON.stringify(workoutSessions)
+  );
+
   currentWorkout = {
     id: Date.now(),
     date: new Date(),
@@ -312,6 +328,7 @@ function saveWorkout() {
 
   renderActiveWorkout();
   renderHistory();
+
   alert("Workout saved.");
 }
 
@@ -319,22 +336,28 @@ function saveWorkout() {
 // -------- HISTORY --------
 
 function renderHistory() {
+
   const historyDiv = document.getElementById("historyList");
   historyDiv.innerHTML = "";
 
-  workoutSessions.forEach(function (workout, workoutIndex) {
+  workoutSessions.forEach(function (workout) {
+
     const workoutDiv = document.createElement("div");
     workoutDiv.style.border = "1px solid #ccc";
     workoutDiv.style.padding = "10px";
     workoutDiv.style.marginBottom = "15px";
 
     const date = new Date(workout.date).toLocaleDateString();
+
     workoutDiv.innerHTML = `<h3>Workout - ${date}</h3>`;
 
     workout.exercises.forEach(function (ex) {
+
       const exDiv = document.createElement("div");
+
       exDiv.textContent =
         `${ex.name} - ${ex.sets}x${ex.reps} @ ${ex.weight || 0}`;
+
       workoutDiv.appendChild(exDiv);
     });
 
@@ -346,22 +369,28 @@ function renderHistory() {
 // -------- EXERCISE LIBRARY --------
 
 function renderExerciseLibrary() {
+
   const container = document.getElementById("exerciseCards");
   container.innerHTML = "";
 
   for (let muscle in exerciseDatabase) {
+
     const header = document.createElement("h3");
     header.textContent = muscle;
     container.appendChild(header);
 
     exerciseDatabase[muscle].forEach(function (exercise) {
+
       const link = document.createElement("a");
+
       link.href =
         "https://www.youtube.com/results?search_query=" +
         encodeURIComponent(exercise.name + " exercise");
+
       link.target = "_blank";
       link.textContent = exercise.name;
       link.style.display = "block";
+
       container.appendChild(link);
     });
   }
