@@ -119,9 +119,12 @@ function generateWorkout() {
 
 function saveExercise() {
 
+  // If no workout exists yet, automatically create one
   if (!currentWorkout) {
-    alert("Start or generate a workout first.");
-    return;
+    currentWorkout = {
+      date: new Date().toLocaleDateString(),
+      exercises: []
+    };
   }
 
   const selectedMuscle = document.getElementById("muscle").value;
