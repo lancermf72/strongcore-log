@@ -17,47 +17,41 @@
   <main>
     <!-- LOG -->
     <section id="log" class="active">
-      <h2>Log Workout</h2>
+  <h2>Log Workout</h2>
 
-      <label>Muscle Group</label>
-      <select id="muscle"></select>
+  <label>Muscle Group</label>
+  <select id="muscle"></select>
 
-      <label>Exercise</label>
-      <select id="exercise"></select>
-<label>
-  <input type="checkbox" id="bodyweightOnly">
-  Bodyweight Only
-</label>
+  <label>Exercise</label>
+  <select id="exercise"></select>
 
-<label>
-  <input type="checkbox" id="dumbbellOnly">
-  Dumbbells Only
-</label>
-      
-<label>
-  <input type="checkbox" id="draSafeMode">
-  DRA Safe Mode
-</label>
-      
-<button id="generateBtn">Generate Workout</button>
+  <label>
+    <input type="checkbox" id="bodyweightOnly">
+    Bodyweight Only
+  </label>
 
-<!-- Custom Exercise Entry -->
-<input type="text" id="customExerciseName" placeholder="Add custom exercise" />
-<button onclick="addCustomExercise()">Add Exercise</button>
+  <label>
+    <input type="checkbox" id="dumbbellOnly">
+    Dumbbells Only
+  </label>
 
-<h3>Active Workout</h3>
-<div id="activeWorkout"></div>
-      <label>Sets</label>
-      <input type="number" id="sets" min="1" />
+  <label>
+    <input type="checkbox" id="draSafeMode">
+    DRA Safe Mode
+  </label>
 
-      <label>Reps</label>
-      <input type="number" id="reps" min="1" />
+  <button id="generateBtn">Generate Workout</button>
 
-      <label>Weight</label>
-      <input type="number" id="weight" min="0" />
+  <!-- Custom Exercise -->
+  <input type="text" id="customExerciseName" placeholder="Add custom exercise" />
+  <button onclick="addCustomExercise()">Add Exercise</button>
 
-      <button id="saveBtn">Save Exercise</button>
-    </section>
+  <h3>Active Workout</h3>
+  <div id="activeWorkout"></div>
+
+  <button onclick="saveWorkout()">Finish Workout</button>
+
+</section>
 
     <!-- EXERCISES -->
     <section id="exercises">
