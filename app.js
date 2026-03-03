@@ -169,15 +169,16 @@ function populateExercises() {
 // -------- LISTENERS --------
 
 function setupListeners() {
-  document.getElementById("muscle")
-    .addEventListener("change", populateExercises);
-
-  document.getElementById("generateBtn")
-    .addEventListener("click", generateWorkout);
 
   const finishBtn = document.getElementById("finishWorkoutBtn");
+
   if (finishBtn) {
-    finishBtn.addEventListener("click", saveWorkout);
+    finishBtn.addEventListener("click", function() {
+      alert("Button is connected");
+      saveWorkout();
+    });
+  } else {
+    alert("Finish button not found");
   }
 }
 
